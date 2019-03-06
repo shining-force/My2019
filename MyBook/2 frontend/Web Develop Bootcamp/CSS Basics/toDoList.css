@@ -1,0 +1,29 @@
+*
+{
+	border:1px solid lightgrey;
+}
+
+li{
+		border:1px solid red;
+}
+
+ul:nth-of-type(2){
+	background: blue;
+}
+
+a[href="http://www.google.com"]{
+	color: rgb(0,255,0);
+}
+
+input[type="checkbox"]
+{
+	background: red;
+}
+
+#special{
+	background: yellow
+}
+
+.completed{
+	text-decoration: line-through;
+}

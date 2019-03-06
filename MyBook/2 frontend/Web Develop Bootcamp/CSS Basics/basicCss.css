@@ -1,0 +1,29 @@
+h1{
+	color: rgba(0,255,255,.22);
+	border-color: purple;
+	border-width: 5px;
+	border-style: solid;
+
+	/*border:5px solid purple;*/
+	/*和上方的border等效*/
+}
+
+h2{
+	color:#4B0082;
+}
+
+h3{
+	color:#FF1493;
+}
+
+h4{
+	background: rgb(255,100,100);
+}
+
+body
+{
+/*	background: url(https://d1w9csuen3k837.cloudfront.net/Pictures/768x432/1/0/6/136106_Two-forms-of-water.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;*/
+	background: pink;
+}
