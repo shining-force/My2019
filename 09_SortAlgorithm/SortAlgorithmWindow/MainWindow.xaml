@@ -1,0 +1,50 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:winform="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="SortAlgorithmWindow.MainWindow"
+        mc:Ignorable="d"
+        Title="SortAlgorithm" Height="480" Width="640" ResizeMode="NoResize" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid Background="#FFF9F2F2">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="m_hStartBtn" Content="Start" HorizontalAlignment="Left" Height="28" Margin="405,352,0,0" VerticalAlignment="Top" Width="80" Click="m_hStartBtn_Click" Background="White"/>
+        <WindowsFormsHost x:Name="m_hDrawArea" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="400" Background="Black">
+            <winform:PictureBox/>
+        </WindowsFormsHost>
+        <ProgressBar x:Name="m_hSortProg" HorizontalAlignment="Left" Height="20" Margin="0,352,0,0" VerticalAlignment="Top" Width="400" Background="#FFE0EAFF"/>
+        <TextBox x:Name="m_hSortState" HorizontalAlignment="Left" Height="80" Margin="0,372,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="400" BorderThickness="3"/>
+        <Label x:Name="m_hSortTypeLabel" Content="SortType:" HorizontalAlignment="Left" Margin="405,131,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
+        <ComboBox x:Name="m_hSortTypeSelect" HorizontalAlignment="Left" Height="26" Margin="474,131,0,0" VerticalAlignment="Top" Width="150" IsReadOnly="True" SelectionChanged="M_hSortTypeSelect_SelectionChanged">
+            <ComboBoxItem Content="SelectSort"/>
+            <ComboBoxItem Content="InsertSort"/>
+            <ComboBoxItem Content="ShellSort_3H"/>
+            <ComboBoxItem Content="MergeSort_Top"/>
+            <ComboBoxItem Content="MergeSort_Bottom"/>
+            <ComboBoxItem Content="QuickSort_base"/>
+            <ComboBoxItem Content="PriorityQueueSort"/>
+            <ComboBoxItem Content="CDefault"/>
+        </ComboBox>
+        <Label x:Name="m_hDataSourceLabel" Content="DataSource:" HorizontalAlignment="Left" Margin="405,1,0,0" VerticalAlignment="Top" Height="26" Width="79"/>
+        <RadioButton x:Name="m_hUseScreenBtn" Content="CurrentScreen" HorizontalAlignment="Left" Margin="484,6,0,0" VerticalAlignment="Top" GroupName="RadioGrp_DataSource" Checked="m_hUseScreenBtn_Checked"/>
+        <RadioButton x:Name="m_hUseFileBtn" Content="FromFile(bmp,jpg...)" HorizontalAlignment="Left" Margin="484,22,0,0" VerticalAlignment="Top" Checked="m_hUseFileBtn_Checked" GroupName="RadioGrp_DataSource"/>
+        <Label x:Name="m_hCurFile" Content="Screen" HorizontalAlignment="Left" Margin="433,33,0,0" VerticalAlignment="Top" Width="191" Background="{x:Null}" FontWeight="Bold"/>
+        <Label x:Name="m_hCurFileLabel" Content="File:" HorizontalAlignment="Left" Margin="405,33,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="m_hSortManual" HorizontalAlignment="Left" Height="150" Margin="410,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <CheckBox x:Name="m_hShowLiveProgress" Content="ShowProgress" HorizontalAlignment="Left" Margin="522,59,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Click="m_hShowLiveProgress_Click">
+            <CheckBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </CheckBox.RenderTransform>
+        </CheckBox>
+        <Label x:Name="m_hShowLiveProgLabel" Content="ShowLiveProgress:" HorizontalAlignment="Left" Margin="405,54,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="m_hShowProgressManul" HorizontalAlignment="Left" Margin="410,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Text="manual" Height="56"/>
+    </Grid>
+</Window>

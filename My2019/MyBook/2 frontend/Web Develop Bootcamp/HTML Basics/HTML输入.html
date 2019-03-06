@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Demo</title>
+</head>
+<body>
+
+<h1>Login</h1>
+
+<form action="http://www.wikipedia.org" method="GET">
+	<label for="username">Email:</label>
+	
+	<!-- required属性表示该控件不可为空，用作HTML的简单数据验证 -->
+	<!-- type为email时，提交会验证该控件是否含有@符号，用作HTML的简单数据验证 -->
+	<input type="email" name="username" placeholder="username" required>
+	<label for="password">Password:</label>
+	<input type="password" name="password" placeholder="password">
+	<input type="checkbox" name="test">
+	<input type="submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,5 @@
+LIBRARY
+EXPORTS
+	GetSortState @1
+	SortAlgorithmStart @2
+	SortAlgorithmStop @3
