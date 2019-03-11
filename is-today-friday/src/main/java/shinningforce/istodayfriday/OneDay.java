@@ -1,4 +1,8 @@
-﻿类定义
+package shinningforce.istodayfriday;
+
+import java.util.Calendar;
+import java.util.Date;
+
 public class OneDay {
     private final Integer mDayOfWeek;
     private final Boolean mIsFriday;
@@ -23,32 +27,3 @@ public class OneDay {
         return mToday;
     }
 }
-
-
-public class FormatDate {
-    private String mFormat;
-    private String mDate;
-
-    public String getmFormat() {
-        return mFormat;
-    }
-
-    public String getmDate() {
-        return mDate;
-    }
-
-    public void setmDate(String mDate) {
-        this.mDate = mDate;
-    }
-
-    public void setmFormat(String mFormat) {
-        this.mFormat = mFormat;
-    }
-}
-
-
-
-
-方法		路径		提交类		返回类
-get		/today		-		Today
-post		/oneDay		FormatDate 	Today
