@@ -1,18 +1,21 @@
 package shinningforce.istodayfriday;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class OneDay {
+    private static final String ONE_DAY_FORMAT = "yyyy-MM-dd";
     private final Integer mDayOfWeek;
     private final Boolean mIsFriday;
-    private final Calendar mToday;
+    private final FormatDate mToday;
 
     public OneDay(Date date) {
-        mToday = Calendar.getInstance();
-        mToday.setTime(date);
-        mDayOfWeek = mToday.get(Calendar.DAY_OF_WEEK);
+        Calendar today = Calendar.getInstance();
+        today.setTime(date);
+        mDayOfWeek = today.get(Calendar.DAY_OF_WEEK);
         mIsFriday = (mDayOfWeek == Calendar.FRIDAY);
+        mToday = new FormatDate(date, ONE_DAY_FORMAT);
     }
 
     public Integer getmDayOfWeek(){
@@ -23,7 +26,7 @@ public class OneDay {
         return mIsFriday;
     }
 
-    public Calendar getmToday(){
+    public FormatDate getmToday(){
         return mToday;
     }
 }

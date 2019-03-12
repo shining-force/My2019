@@ -1,14 +1,20 @@
 ﻿类定义
 public class OneDay {
+    private static final String ONE_DAY_FORMAT = "yyyy-MM-dd";
     private final Integer mDayOfWeek;
     private final Boolean mIsFriday;
-    private final Calendar mToday;
+    private final FormatDate mToday;
 
     public OneDay(Date date) {
-        mToday = Calendar.getInstance();
-        mToday.setTime(date);
-        mDayOfWeek = mToday.get(Calendar.DAY_OF_WEEK);
+        Calendar today = Calendar.getInstance();
+        today.setTime(date);
+        mDayOfWeek = today.get(Calendar.DAY_OF_WEEK);
         mIsFriday = (mDayOfWeek == Calendar.FRIDAY);
+
+        mToday = new FormatDate();
+        mToday.setmFormat(ONE_DAY_FORMAT);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(ONE_DAY_FORMAT);
+        mToday.setmDate(simpleDateFormat.format(date));
     }
 
     public Integer getmDayOfWeek(){
@@ -19,10 +25,9 @@ public class OneDay {
         return mIsFriday;
     }
 
-    public Calendar getmToday(){
+    public FormatDate getmToday(){
         return mToday;
     }
-}
 
 
 public class FormatDate {
@@ -49,6 +54,7 @@ public class FormatDate {
 
 
 
-方法		路径		提交类		返回类
-get		/today		-		Today
-post		/oneDay		FormatDate 	Today
+方法		路径		    提交类		                                返回类
+get		    /today		    -		                                    Today
+get         /backgroundPic  ?dayOfWeek = ""&width = ""&height = ""      -
+post		/oneDay		    FormatDate 	                                Today
