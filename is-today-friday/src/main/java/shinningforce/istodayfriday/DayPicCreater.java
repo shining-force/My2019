@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Random;
 
@@ -26,6 +28,7 @@ public class DayPicCreater {
         graphics.fillRect(0, 0, width, height);
         graphics.dispose();
     }
+
     @Nullable
     public Throwable ImageOutput(HttpServletResponse response){
         response.setContentType("image/jpeg;charset=UTF-8");
