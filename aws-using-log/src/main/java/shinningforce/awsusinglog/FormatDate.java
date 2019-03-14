@@ -16,6 +16,15 @@ public class FormatDate {
         mDate = simpleDateFormat.format(date);
     }
 
+    public FormatDate(String date, String format){
+        mDate = date;
+        mFormat = format;
+    }
+
+    public FormatDate(){
+
+    }
+
     public String getmFormat() {
         return mFormat;
     }

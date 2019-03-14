@@ -14,7 +14,7 @@ public class CtrlExceptionHandler extends ResponseEntityExceptionHandler {
     ResponseEntity<RequestOutCome> handleControllerException(HttpServletRequest request, Throwable ex) {
         RequestOutCome requestOutCome = new RequestOutCome();
         requestOutCome.setSuccess(false);
-        requestOutCome.setmMsg("Before controller:" + ex.getLocalizedMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(requestOutCome);
+        requestOutCome.setmMsg("Error in controller:" + ex.getClass().toString());
+        return ResponseEntity.badRequest().body(requestOutCome);
     }
 }

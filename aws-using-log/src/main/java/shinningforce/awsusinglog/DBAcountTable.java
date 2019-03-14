@@ -1,9 +1,8 @@
 package shinningforce.awsusinglog;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Columns;
+
+import javax.persistence.*;
 
 @Entity
 public class DBAcountTable {
@@ -11,7 +10,9 @@ public class DBAcountTable {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer mID;
 
+    @Column(name = "userName")
     private String mUserName;
+    @Column(name = "Password")
     private String mPassword;
 
     public Integer getmID() {
