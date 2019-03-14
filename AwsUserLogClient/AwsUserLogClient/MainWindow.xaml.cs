@@ -20,6 +20,14 @@ namespace AwsUserLogClient
     /// </summary>
     public partial class MainWindow : Window
     {
+		private enum E_PAGE
+		{
+			e_UserSetPage,
+			e_ReadLogPage,
+			e_WriteLogPage,
+			e_OutputPage
+		}
+		private E_PAGE m_eCurrentPage;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,5 +37,43 @@ namespace AwsUserLogClient
         {
             Close();
         }
-    }
+
+		private void M_hUserSetPageBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (m_eCurrentPage == E_PAGE.e_UserSetPage)
+				return;
+			m_hView.Navigate(new UserSetPage());
+			m_eCurrentPage = E_PAGE.e_UserSetPage;
+		}
+
+		private void M_hReadLogPageBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (m_eCurrentPage == E_PAGE.e_ReadLogPage)
+				return;
+			m_hView.Navigate(new ReadLogPage());
+			m_eCurrentPage = E_PAGE.e_ReadLogPage;
+		}
+
+		private void M_hWriteLogPageBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (m_eCurrentPage == E_PAGE.e_WriteLogPage)
+				return;
+			m_hView.Navigate(new WriteLogPage());
+			m_eCurrentPage = E_PAGE.e_WriteLogPage;
+		}
+
+		private void M_hOutputLogPageBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (m_eCurrentPage == E_PAGE.e_OutputPage)
+				return;
+			m_hView.Navigate(new OutputPage());
+			m_eCurrentPage = E_PAGE.e_OutputPage;
+		}
+
+		private void M_hView_Loaded(object sender, RoutedEventArgs e)
+		{
+			m_hView.Navigate(new UserSetPage());
+			m_eCurrentPage = E_PAGE.e_UserSetPage;
+		}
+	}
 }
