@@ -62,13 +62,6 @@ namespace AwsUserLogClient
 			m_eCurrentPage = E_PAGE.e_WriteLogPage;
 		}
 
-		private void M_hOutputLogPageBtn_Click(object sender, RoutedEventArgs e)
-		{
-			if (m_eCurrentPage == E_PAGE.e_OutputPage)
-				return;
-			m_hView.Navigate(new OutputPage());
-			m_eCurrentPage = E_PAGE.e_OutputPage;
-		}
 
 		private void M_hView_Loaded(object sender, RoutedEventArgs e)
 		{

@@ -6,13 +6,25 @@
         xmlns:local="clr-namespace:AwsUserLogClient"
         mc:Ignorable="d"
         Title="AwsUserLogClient" Height="480" Width="640" ResizeMode="NoResize" Background="White" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Grid Margin="0">
-        <Frame x:Name="m_hView" Content="" Margin="0,0,0,40" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="M_hView_Loaded" NavigationUIVisibility="Hidden"/>
-        <Button x:Name="m_hUserSetPageBtn" Content="登 录" HorizontalAlignment="Left" Margin="0,412,0,0" VerticalAlignment="Bottom" Width="64" Height="40" Grid.RowSpan="2" FontSize="16" Click="M_hUserSetPageBtn_Click"/>
-        <Button x:Name="m_hReadLogPageBtn" Content="读日志" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="64" Height="40" FontSize="16" Margin="64,411,0,0" Grid.RowSpan="2" Click="M_hReadLogPageBtn_Click"/>
-        <Button x:Name="m_hWriteLogPageBtn" Content="写日志" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="64" Height="40" FontSize="16" Margin="128,411,0,0" Grid.RowSpan="2" Click="M_hWriteLogPageBtn_Click"/>
-        <Button x:Name="m_hOutputLogPageBtn" Content="导 出" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="64" Height="40" FontSize="16" Margin="192,0,0,0" Grid.Row="1" Click="M_hOutputLogPageBtn_Click"/>
-        <Button x:Name="m_hCloseBtn" Content="关 闭" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="64" Height="40" FontSize="16" Margin="576,0,0,0" Click="m_hCloseBtn_Click"/>
+    <Grid Margin="0" Background="#FFE8E8E8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Rectangle Margin="0" Grid.Row="1">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE8E8E8" Offset="0"/>
+                    <GradientStop Color="#FF8746F9" Offset="1"/>
+                    <GradientStop Color="#FF9356FF" Offset="0.621"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Frame x:Name="m_hView" Content="" Margin="0,0,0,0.44" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Loaded="M_hView_Loaded" NavigationUIVisibility="Hidden"/>
+        <Button x:Name="m_hUserSetPageBtn" Content="用 户" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="64" Height="40" FontSize="16" Click="M_hUserSetPageBtn_Click" Grid.Row="1"/>
+        <Button x:Name="m_hReadLogPageBtn" Content="读日志" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="64" Height="40" FontSize="16" Margin="64,0,0,0" Click="M_hReadLogPageBtn_Click" Grid.Row="1"/>
+        <Button x:Name="m_hWriteLogPageBtn" Content="写日志" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="64" Height="40" FontSize="16" Margin="128,0,0,0" Click="M_hWriteLogPageBtn_Click" Grid.Row="1"/>
+        <Button x:Name="m_hCloseBtn" Content="关 闭" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="64" Height="40" FontSize="16" Margin="576,0,0,0" Click="m_hCloseBtn_Click" Grid.Row="1"/>
     </Grid>
 
 

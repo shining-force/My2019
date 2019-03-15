@@ -58,5 +58,10 @@ namespace AwsUserLogClient
 			m_hSetBtn.Margin = 
 				new Thickness(m_hSetBtn.ActualWidth * 0.2, m_hSetBtn.ActualHeight * 0.15, m_hSetBtn.ActualWidth * 0.2, m_hSetBtn.ActualHeight * 0.15);
 		}
-	}
+
+        private void m_hPageTitle_Loaded(object sender, RoutedEventArgs e)
+        {
+            m_hPageTitle.FontSize = m_hPageTitle.ActualHeight * 0.5;
+        }
+    }
 }

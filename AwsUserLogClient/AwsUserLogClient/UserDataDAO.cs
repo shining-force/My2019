@@ -17,4 +17,14 @@ namespace AwsUserLogClient
 			return "";
 		}
 	}
+
+    public class AwsLog_Transmit
+    {
+        public String mFormatDate { get; set; }
+        public String mFormat { get; set; }
+        public String mTitle { get; set; }
+        public String mDetail { get; set; }
+        public String mFromUser { get; set; }
+        public String mSW { get; set; }
+    }
 }

@@ -55,9 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="OutputPage.xaml.cs">
-      <DependentUpon>OutputPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ReadLogPage.xaml.cs">
       <DependentUpon>ReadLogPage.xaml</DependentUpon>
     </Compile>
@@ -80,10 +77,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="OutputPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ReadLogPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

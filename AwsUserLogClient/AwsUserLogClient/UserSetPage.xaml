@@ -6,31 +6,33 @@
       xmlns:local="clr-namespace:AwsUserLogClient"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="UserSetPage" Background="White">
+      Title="UserSetPage">
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="1*"/>
-			<RowDefinition Height="1*"/>
-			<RowDefinition Height="1*"/>
-			<RowDefinition Height="1*"/>
-			<RowDefinition Height="1*"/>
-			<RowDefinition Height="1*"/>
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="2*"/>
-			<ColumnDefinition Width="1*"/>
-			<ColumnDefinition Width="1*"/>
-			<ColumnDefinition Width="2*"/>
-			<ColumnDefinition Width="2*"/>
-		</Grid.ColumnDefinitions>
-		<Label x:Name="m_hTitleLabel" Grid.ColumnSpan="3" Content="用户设置" Grid.Column="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Loaded="M_hTitleLabel_Loaded" Grid.Row="1"/>
-		<Label x:Name="m_hUserNameLabel" Content="用户名" Grid.Column="1" Margin="0" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Loaded="M_hUserNameLabel_Loaded"/>
-		<Label x:Name="m_hPasswordLabel" Content="密 码" Grid.Column="1" Margin="0" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Loaded="M_hPasswordLabel_Loaded"/>
-		<TextBox x:Name="m_hUserNameBox" Grid.ColumnSpan="2" Grid.Column="2" Margin="0" Grid.Row="2" TextWrapping="Wrap" VerticalContentAlignment="Center" Loaded="M_hUserNameBox_Loaded"/>
-		<TextBox x:Name="m_hPasswordBox" Grid.ColumnSpan="2" Grid.Column="2" Margin="0" Grid.Row="3" TextWrapping="Wrap" VerticalContentAlignment="Center" Loaded="M_hPasswordBox_Loaded"/>
-		<Button x:Name="m_hSetBtn" Grid.ColumnSpan="3" Content="设 置" Grid.Column="1" Margin="0" Grid.Row="4" Loaded="M_hSetBtn_Loaded"/>
+    <Grid Background="#FFE8E8E8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="m_hTitleLabel" Grid.ColumnSpan="3" Content="用户设置" Grid.Column="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Loaded="M_hTitleLabel_Loaded" Grid.Row="2"/>
+        <Label x:Name="m_hUserNameLabel" Content="用户名" Grid.Column="1" Margin="0" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Loaded="M_hUserNameLabel_Loaded"/>
+        <Label x:Name="m_hPasswordLabel" Content="密 码" Grid.Column="1" Margin="0" Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Loaded="M_hPasswordLabel_Loaded"/>
+        <TextBox x:Name="m_hUserNameBox" Grid.ColumnSpan="2" Grid.Column="2" Margin="0" Grid.Row="3" TextWrapping="Wrap" VerticalContentAlignment="Center" Loaded="M_hUserNameBox_Loaded"/>
+        <TextBox x:Name="m_hPasswordBox" Grid.ColumnSpan="2" Grid.Column="2" Margin="0" Grid.Row="4" TextWrapping="Wrap" VerticalContentAlignment="Center" Loaded="M_hPasswordBox_Loaded"/>
+        <Button x:Name="m_hSetBtn" Grid.ColumnSpan="3" Content="设 置" Grid.Column="1" Margin="0" Grid.Row="5" Loaded="M_hSetBtn_Loaded"/>
+        <Label x:Name="m_hPageTitle" Content="用户" Margin="0" Foreground="White" Background="#FF2C2C2C" Grid.ColumnSpan="5" Loaded="m_hPageTitle_Loaded" VerticalContentAlignment="Center"/>
 
 
-	</Grid>
+    </Grid>
 </Page>
