@@ -20,10 +20,12 @@ namespace AwsUserLogClient
 	/// </summary>
 	public partial class UserSetPage : Page
 	{
-		public UserSetPage()
+        private Window m_hParent;
+		public UserSetPage(Window parent)
 		{
 			InitializeComponent();
-		}
+            m_hParent = parent;
+        }
 
 		private void M_hTitleLabel_Loaded(object sender, RoutedEventArgs e)
 		{
@@ -32,25 +34,27 @@ namespace AwsUserLogClient
 
 		private void M_hUserNameLabel_Loaded(object sender, RoutedEventArgs e)
 		{
-			m_hUserNameLabel.FontSize = m_hUserNameLabel.ActualHeight * 0.3;
+			m_hUserNameLabel.FontSize = m_hUserNameLabel.ActualHeight * 0.25;
 		}
 
 		private void M_hPasswordLabel_Loaded(object sender, RoutedEventArgs e)
 		{
-			m_hPasswordLabel.FontSize = m_hPasswordLabel.ActualHeight * 0.3;
+			m_hPasswordLabel.FontSize = m_hPasswordLabel.ActualHeight * 0.25;
 		}
 
 		private void M_hUserNameBox_Loaded(object sender, RoutedEventArgs e)
 		{
 			m_hUserNameBox.FontSize = m_hUserNameBox.ActualHeight * 0.3;
 			m_hUserNameBox.Margin = new Thickness(0, m_hUserNameBox.ActualHeight * 0.2, 0, m_hUserNameBox.ActualHeight * 0.2);
-		}
+            m_hUserNameBox.Text = UserDataDAO.m_szUserName;          
+        }
 
 		private void M_hPasswordBox_Loaded(object sender, RoutedEventArgs e)
 		{
 			m_hPasswordBox.FontSize = m_hPasswordBox.ActualHeight * 0.3;
 			m_hPasswordBox.Margin = new Thickness(0, m_hPasswordBox.ActualHeight * 0.2, 0, m_hPasswordBox.ActualHeight * 0.2);
-		}
+            m_hPasswordBox.Password = UserDataDAO.m_szPassword;
+        }
 
 		private void M_hSetBtn_Loaded(object sender, RoutedEventArgs e)
 		{
@@ -62,6 +66,20 @@ namespace AwsUserLogClient
         private void m_hPageTitle_Loaded(object sender, RoutedEventArgs e)
         {
             m_hPageTitle.FontSize = m_hPageTitle.ActualHeight * 0.5;
+        }
+
+        //*****************************functions*********************************//
+        private void m_hPageTitle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            m_hParent.DragMove();
+        }
+
+        private void m_hSetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            UserDataDAO.m_szUserName = m_hUserNameBox.Text;
+            UserDataDAO.m_szPassword = m_hPasswordBox.Password;
+
+            MessageBox.Show("设置完成！");
         }
     }
 }

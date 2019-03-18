@@ -13,10 +13,20 @@ public class StdMD5Maker {
             mdInst = MessageDigest.getInstance("MD5");
             mdInst.update(input.getBytes());
             BASE64Encoder encoder = new BASE64Encoder();
-            return encoder.encode(mdInst.digest());
+            char[] raw = encoder.encode(mdInst.digest()).toCharArray();
+            for(int iIndex = 0; iIndex < raw.length; ++ iIndex){
+                if(!isCharacter(raw[iIndex])){
+                    raw[iIndex] = 'X';
+                }
+            }
+            return new String(raw);
         }catch (Exception e)
         {
             return null;
         }
+    }
+
+    public static Boolean isCharacter(char c){
+        return (((c <= 'z') && (c >= 'a')) || ((c <= 'Z') && (c >= 'A')));
     }
 }

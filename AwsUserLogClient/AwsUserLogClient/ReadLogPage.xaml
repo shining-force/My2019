@@ -10,28 +10,25 @@
 
     <Grid Background="#FFE8E8E8">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="8*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="56*"/>
+            <RowDefinition Height="22*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="m_hPageTitle" Content="读日志" Grid.ColumnSpan="5" Background="#FF2C2C2C" Foreground="White" VerticalContentAlignment="Center" Loaded="m_hPageTitle_Loaded"/>
+        <Label x:Name="m_hPageTitle" Content="读日志" Grid.ColumnSpan="5" Background="#FF2C2C2C" Foreground="White" VerticalContentAlignment="Center" Loaded="m_hPageTitle_Loaded" MouseDown="m_hPageTitle_MouseDown"/>
         <Label x:Name="m_hStDataLabel" Content="开始日期" Margin="0" Grid.Row="1" VerticalContentAlignment="Center" Loaded="m_hStDataLabel_Loaded"/>
-        <Label x:Name="m_hEdDataLabel" Content="结束日期" Margin="0" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" Loaded="m_hEdDataLabel_Loaded"/>
-        <Calendar x:Name="m_hCalendar" HorizontalAlignment="Left" Margin="50,24,0,0" VerticalAlignment="Top" Visibility="Hidden" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Height="168" Width="179"/>
-        <TextBox x:Name="m_hStDateBox" Margin="0" TextWrapping="Wrap" Text="TextBox" Grid.Row="2" VerticalContentAlignment="Center" Loaded="m_hStDateBox_Loaded"/>
-        <TextBox x:Name="m_hEdDateBox" Margin="0" TextWrapping="Wrap" Text="TextBox" Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center" Loaded="m_hEdDateBox_Loaded"/>
-        <Button x:Name="m_hReadDataBtn" Content="读 取" Margin="0" Grid.Column="2" Grid.Row="1" Loaded="m_hReadDataBtn_Loaded"/>
+        <Label x:Name="m_hEdDataLabel" Content="结束日期" Margin="0" Grid.Row="2" VerticalContentAlignment="Center" Loaded="m_hEdDataLabel_Loaded"/>
+        <Button x:Name="m_hReadDataBtn" Content="读 取" Margin="0" Grid.Column="2" Grid.Row="1" Loaded="m_hReadDataBtn_Loaded" Click="m_hReadDataBtn_Click"/>
         <TextBlock x:Name="m_hDetailbox" Margin="0" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="5" Grid.Row="4"/>
-        <DataGrid x:Name="m_hLogViewer" Margin="0" Loaded="m_hLogViewer_Loaded" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False" Grid.Row="3" Grid.ColumnSpan="5">
+        <DataGrid x:Name="m_hLogViewer" Margin="0" Loaded="m_hLogViewer_Loaded" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False" Grid.Row="3" Grid.ColumnSpan="5" Focusable="False" IsReadOnly="True" SelectedCellsChanged="m_hLogViewer_SelectedCellsChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="m_hViewerCol_Date" Binding="{Binding mFormatDate}" ClipboardContentBinding="{x:Null}" Header="日期"/>
                 <DataGridTextColumn x:Name="m_hViewerCol_LogTitle" Binding="{Binding mTitle}" ClipboardContentBinding="{x:Null}" Header="标题"/>
@@ -39,8 +36,9 @@
                 <DataGridTextColumn x:Name="m_hViewerCol_LogDetail" Binding="{Binding mDetail}" ClipboardContentBinding="{x:Null}" Header="详细"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="m_hState" Content="Label" Margin="0" Grid.Row="2" Grid.Column="2" VerticalContentAlignment="Center" Loaded="m_hState_Loaded"/>
+        <Label x:Name="m_hState" Content="" Margin="0" Grid.Row="2" Grid.Column="2" VerticalContentAlignment="Center" Loaded="m_hState_Loaded" Grid.ColumnSpan="3"/>
         <Button x:Name="m_hOutputDataBtn" Content="输 出" Margin="0" Grid.Column="3" Grid.Row="1" Loaded="m_hOutputDataBtn_Loaded"/>
-
+        <DatePicker x:Name="m_hStDateBox" Grid.Column="1" Margin="0" Grid.Row="1" Loaded="m_hStDateBox_Loaded" VerticalContentAlignment="Center"/>
+        <DatePicker x:Name="m_hEdDateBox" Grid.Column="1" Margin="0" Grid.Row="2" Loaded="m_hEdDateBox_Loaded" VerticalContentAlignment="Center"/>
     </Grid>
 </Page>

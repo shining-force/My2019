@@ -18,13 +18,14 @@ public class ServiceController {
 
     @GetMapping("/UseLogs")
     public ResponseEntity<List<AwsLog_Transmit>> getUserLogs(@RequestParam(value = "mSW", defaultValue = "")String sercetWord,
-                                                      @RequestParam(value = "st", defaultValue = "")FormatDate startDate,
-                                                      @RequestParam(value = "ed", defaultValue = "")FormatDate endDate) {
+                                                      @RequestParam(value = "st", defaultValue = "")String startDate,
+                                                      @RequestParam(value = "ed", defaultValue = "")String endDate,
+                                                      @RequestParam(value = "format", defaultValue = "yyyy-MM-dd")String format) {
         if(mSWHandler.getUserNameFromSW(sercetWord) == null)
             return ResponseEntity.badRequest().body(null);
 
-        Date stDate = startDate.toDateType();
-        Date edDate = endDate.toDateType();
+        Date stDate = new FormatDate(startDate, format).toDateType();
+        Date edDate = new FormatDate(endDate, format).toDateType();
         if((stDate == null) || (edDate == null))
             return ResponseEntity.badRequest().body(null);
 

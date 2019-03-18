@@ -16,13 +16,13 @@
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="66*"/>
             <RowDefinition Height="4*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
         <Label x:Name="m_hPageTitle" Content="写日志" Background="#FF2C2C2C" Foreground="White" Grid.ColumnSpan="4" VerticalContentAlignment="Center" Loaded="m_hPageTitle_Loaded"/>
         <Label x:Name="m_hLogTitleLabel" Content="标题" Margin="0" Grid.Row="1" VerticalContentAlignment="Center" Loaded="m_hLogTitleLabel_Loaded"/>

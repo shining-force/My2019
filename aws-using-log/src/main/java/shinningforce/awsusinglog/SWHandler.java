@@ -13,8 +13,8 @@ public class SWHandler {
     public String getUserNameFromSW(String sw){
         for (DBAcountTable dbAccountTable:
                 dbAccountRepository.findAll()) {
-            String swString = dbAccountTable.getmUserName() + dbAccountTable.getmPassword();
-            if(sw.equals(StdMD5Maker.getMD5(swString)))
+            String swString = StdMD5Maker.getMD5(dbAccountTable.getmUserName() + dbAccountTable.getmPassword());
+            if(sw.equals(swString))
             {
                 return dbAccountTable.getmUserName();
             }

@@ -42,7 +42,7 @@ namespace AwsUserLogClient
 		{
 			if (m_eCurrentPage == E_PAGE.e_UserSetPage)
 				return;
-			m_hView.Navigate(new UserSetPage());
+			m_hView.Navigate(new UserSetPage(this));
 			m_eCurrentPage = E_PAGE.e_UserSetPage;
 		}
 
@@ -50,7 +50,7 @@ namespace AwsUserLogClient
 		{
 			if (m_eCurrentPage == E_PAGE.e_ReadLogPage)
 				return;
-			m_hView.Navigate(new ReadLogPage());
+			m_hView.Navigate(new ReadLogPage(this));
 			m_eCurrentPage = E_PAGE.e_ReadLogPage;
 		}
 
@@ -65,7 +65,7 @@ namespace AwsUserLogClient
 
 		private void M_hView_Loaded(object sender, RoutedEventArgs e)
 		{
-			m_hView.Navigate(new UserSetPage());
+			m_hView.Navigate(new UserSetPage(this));
 			m_eCurrentPage = E_PAGE.e_UserSetPage;
 		}
 	}
