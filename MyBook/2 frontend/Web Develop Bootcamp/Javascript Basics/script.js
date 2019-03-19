@@ -4,13 +4,15 @@
 // console.log("Nice to meet you " + firstName + " " + lastName);
 // console.log("you are " + _age + " years old ");
 
-var _age = prompt("how old are you?")*365;
-console.log(_age + " days you've been alive");
+let answer = "123";
 
-let i =0
 
-while(i<100)
+if(true)
 {
-    console.log(i);
-    i++;
+    alert("answer is not a number");
+
+    Number(answer)
+
+    answer.replace('-','_');
+    alert()
 }
