@@ -4,15 +4,9 @@
 // console.log("Nice to meet you " + firstName + " " + lastName);
 // console.log("you are " + _age + " years old ");
 
-let answer = "123";
+var names = ["jack","john","tommy"];
 
 
-if(true)
-{
-    alert("answer is not a number");
-
-    Number(answer)
-
-    answer.replace('-','_');
-    alert()
-}
+names.forEach(function () {
+    console.log(arg);
+})

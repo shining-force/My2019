@@ -20,6 +20,7 @@ namespace AwsUserLogClient
     /// </summary>
     public partial class MainWindow : Window
     {
+
 		private enum E_PAGE
 		{
 			e_UserSetPage,
