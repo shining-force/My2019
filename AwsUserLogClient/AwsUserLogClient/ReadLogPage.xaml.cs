@@ -105,7 +105,7 @@ namespace AwsUserLogClient
                 szStDate = m_hStDateBox.SelectedDate.Value.ToString(szFormat);
                 szEdDate = m_hEdDateBox.SelectedDate.Value.ToString(szFormat);
             }
-            String szRequestUrl = "http://localhost:8080/UseLogs?mSW={0}&st={1}&ed={2}&format={3}";
+            String szRequestUrl = UserDataDAO.m_szBaseUrl + "/UseLogs?mSW={0}&st={1}&ed={2}&format={3}";
             String szSW = UserDataDAO.CreateSW();
 
             szRequestUrl = String.Format(szRequestUrl, szSW, szStDate, szEdDate, szFormat);

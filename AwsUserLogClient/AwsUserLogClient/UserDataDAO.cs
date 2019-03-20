@@ -11,7 +11,7 @@ namespace AwsUserLogClient
 	{
 		public static String m_szUserName;
 		public static String m_szPassword;
-		public static String m_szBaseUrl;
+		public static String m_szBaseUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com";
 
         public static List<AwsLog_Transmit> m_pUseLogList;
 

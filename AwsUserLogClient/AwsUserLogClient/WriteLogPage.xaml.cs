@@ -75,7 +75,7 @@ namespace AwsUserLogClient
 
         private void m_hSendBtn_Click(object sender, RoutedEventArgs e)
         {
-            String szRequestUrl = "http://localhost:8080/NewLog";
+            String szRequestUrl = UserDataDAO.m_szBaseUrl + "/NewLog";
             String szSW = UserDataDAO.CreateSW();
             HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
             hRequest.Method = "POST";
@@ -110,7 +110,6 @@ namespace AwsUserLogClient
             }
             catch (Exception e)
             {
-                //Dispatcher.Invoke(new Action(delegate { m_hState.Content = e.Message; }));
                 MessageBox.Show(e.Message);
                 return;
             }
