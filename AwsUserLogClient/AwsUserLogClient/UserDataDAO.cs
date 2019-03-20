@@ -14,6 +14,9 @@ namespace AwsUserLogClient
 		public static String m_szBaseUrl;
 
         public static List<AwsLog_Transmit> m_pUseLogList;
+
+        public static String m_szLogTitleOnWriting;
+        public static String m_szLogDetailOnWriting;
 		public static String CreateSW()
         {
             MD5 hMd5 = new MD5CryptoServiceProvider();

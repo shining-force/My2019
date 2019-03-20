@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:AwsUserLogClient"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="WriteLogPage">
+      Title="WriteLogPage" Unloaded="Page_Unloaded">
 
     <Grid Background="#FFE8E8E8">
         <Grid.ColumnDefinitions>
@@ -24,12 +24,12 @@
             <RowDefinition Height="8*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="m_hPageTitle" Content="写日志" Background="#FF2C2C2C" Foreground="White" Grid.ColumnSpan="4" VerticalContentAlignment="Center" Loaded="m_hPageTitle_Loaded"/>
+        <Label x:Name="m_hPageTitle" Content="写日志" Background="#FF2C2C2C" Foreground="White" Grid.ColumnSpan="4" VerticalContentAlignment="Center" Loaded="m_hPageTitle_Loaded" MouseDown="m_hPageTitle_MouseDown"/>
         <Label x:Name="m_hLogTitleLabel" Content="标题" Margin="0" Grid.Row="1" VerticalContentAlignment="Center" Loaded="m_hLogTitleLabel_Loaded"/>
         <Label x:Name="m_hLogDetailLabel" Content="详细" Margin="0" Grid.Row="2" VerticalContentAlignment="Center" Loaded="m_hLogDetailLabel_Loaded"/>
-        <TextBox x:Name="m_hLogDetailBox" Margin="1" TextWrapping="Wrap" Grid.Row="3" Grid.ColumnSpan="4" Loaded="m_hLogDetailBox_Loaded"/>
+        <TextBox x:Name="m_hLogDetailBox" Margin="1" TextWrapping="Wrap" Grid.Row="3" Grid.ColumnSpan="4" Loaded="m_hLogDetailBox_Loaded" AcceptsReturn="True"/>
         <TextBox x:Name="m_hLogTitleBox" Margin="1" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" Grid.ColumnSpan="3" Loaded="m_hLogTitleBox_Loaded"/>
-        <Button x:Name="m_hSendBtn" Content="提 交" Margin="0" Grid.Row="5" Grid.Column="2" LayoutUpdated="m_hSendBtn_LayoutUpdated"/>
+        <Button x:Name="m_hSendBtn" Content="提 交" Margin="0" Grid.Row="5" Grid.Column="2" LayoutUpdated="m_hSendBtn_LayoutUpdated" Click="m_hSendBtn_Click"/>
 
     </Grid>
 </Page>

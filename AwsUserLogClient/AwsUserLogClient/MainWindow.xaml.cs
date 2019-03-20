@@ -58,7 +58,7 @@ namespace AwsUserLogClient
 		{
 			if (m_eCurrentPage == E_PAGE.e_WriteLogPage)
 				return;
-			m_hView.Navigate(new WriteLogPage());
+			m_hView.Navigate(new WriteLogPage(this));
 			m_eCurrentPage = E_PAGE.e_WriteLogPage;
 		}
 

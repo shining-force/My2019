@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,10 +23,12 @@ namespace AwsUserLogClient
 	/// </summary>
 	public partial class WriteLogPage : Page
 	{
-		public WriteLogPage()
+        private Window m_hParent;
+		public WriteLogPage(Window parent)
 		{
 			InitializeComponent();
-		}
+            m_hParent = parent;
+        }
 
         private void m_hPageTitle_Loaded(object sender, RoutedEventArgs e)
         {
@@ -38,6 +43,7 @@ namespace AwsUserLogClient
         private void m_hLogTitleBox_Loaded(object sender, RoutedEventArgs e)
         {
             m_hLogTitleBox.FontSize = m_hLogTitleBox.ActualHeight * 0.5;
+            m_hLogTitleBox.Text = UserDataDAO.m_szLogTitleOnWriting;
         }
 
         private void m_hLogDetailLabel_Loaded(object sender, RoutedEventArgs e)
@@ -47,12 +53,70 @@ namespace AwsUserLogClient
 
         private void m_hLogDetailBox_Loaded(object sender, RoutedEventArgs e)
         {
-            m_hLogDetailBox.FontSize = m_hLogDetailBox.ActualHeight * 0.5;
+            m_hLogDetailBox.Text = UserDataDAO.m_szLogDetailOnWriting;
         }
 
         private void m_hSendBtn_LayoutUpdated(object sender, EventArgs e)
         {
             m_hSendBtn.FontSize = m_hSendBtn.ActualHeight * 0.5;
+        }
+
+        //**********************************functions**********************************//
+        private void m_hPageTitle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            m_hParent.DragMove();
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            UserDataDAO.m_szLogTitleOnWriting = m_hLogTitleBox.Text;
+            UserDataDAO.m_szLogDetailOnWriting = m_hLogDetailBox.Text;
+        }
+
+        private void m_hSendBtn_Click(object sender, RoutedEventArgs e)
+        {
+            String szRequestUrl = "http://localhost:8080/NewLog";
+            String szSW = UserDataDAO.CreateSW();
+            HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
+            hRequest.Method = "POST";
+            hRequest.ContentType = "application/json";
+            hRequest.Timeout = 10000;
+
+            AwsLog_Transmit log = new AwsLog_Transmit();
+            log.mSW = UserDataDAO.CreateSW();
+            log.mFormat = "yyyy-MM-dd";
+            log.mFormatDate = DateTime.Now.ToString(log.mFormat);
+            log.mTitle = m_hLogTitleBox.Text;
+            log.mDetail = m_hLogDetailBox.Text;
+
+            JsonSerializerSettings jsSettings = new JsonSerializerSettings();
+            jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            string json = JsonConvert.SerializeObject(log, jsSettings);
+
+            Stream req = hRequest.GetRequestStream();
+            byte[] bytes = Encoding.UTF8.GetBytes(json);
+            req.Write(bytes, 0, bytes.Length);
+
+            hRequest.BeginGetResponse(new AsyncCallback(LogWriteResponse), hRequest);
+        }
+
+        public void LogWriteResponse(IAsyncResult hAsyncResult)
+        {
+            HttpWebRequest hRequest = hAsyncResult.AsyncState as HttpWebRequest;
+            HttpWebResponse hResult;
+            try
+            {
+                hResult = hRequest.EndGetResponse(hAsyncResult) as HttpWebResponse;
+            }
+            catch (Exception e)
+            {
+                //Dispatcher.Invoke(new Action(delegate { m_hState.Content = e.Message; }));
+                MessageBox.Show(e.Message);
+                return;
+            }
+            MessageBox.Show("发送成功。");
+            Dispatcher.Invoke(new Action(delegate { m_hLogTitleBox.Text = ""; m_hLogDetailBox.Text = ""; }));
+
         }
     }
 }

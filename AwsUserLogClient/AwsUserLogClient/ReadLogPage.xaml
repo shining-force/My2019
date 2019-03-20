@@ -37,7 +37,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label x:Name="m_hState" Content="" Margin="0" Grid.Row="2" Grid.Column="2" VerticalContentAlignment="Center" Loaded="m_hState_Loaded" Grid.ColumnSpan="3"/>
-        <Button x:Name="m_hOutputDataBtn" Content="输 出" Margin="0" Grid.Column="3" Grid.Row="1" Loaded="m_hOutputDataBtn_Loaded"/>
+        <Button x:Name="m_hOutputDataBtn" Content="输 出" Margin="0" Grid.Column="3" Grid.Row="1" Loaded="m_hOutputDataBtn_Loaded" Click="m_hOutputDataBtn_Click"/>
         <DatePicker x:Name="m_hStDateBox" Grid.Column="1" Margin="0" Grid.Row="1" Loaded="m_hStDateBox_Loaded" VerticalContentAlignment="Center"/>
         <DatePicker x:Name="m_hEdDateBox" Grid.Column="1" Margin="0" Grid.Row="2" Loaded="m_hEdDateBox_Loaded" VerticalContentAlignment="Center"/>
     </Grid>

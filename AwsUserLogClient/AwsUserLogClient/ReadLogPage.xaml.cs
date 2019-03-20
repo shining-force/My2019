@@ -92,15 +92,20 @@ namespace AwsUserLogClient
 
         private void m_hReadDataBtn_Click(object sender, RoutedEventArgs e)
         {
+            String szStDate;
+            String szEdDate;
+            String szFormat = "yyyy-MM-dd";
             if ((m_hStDateBox.SelectedDate == null) || (m_hEdDateBox.SelectedDate == null))
             {
-                MessageBox.Show("请设置日期。");
-                return;
+                szStDate = "2000-01-01";
+                szEdDate = "3000-01-01";
+            }
+            else
+            {
+                szStDate = m_hStDateBox.SelectedDate.Value.ToString(szFormat);
+                szEdDate = m_hEdDateBox.SelectedDate.Value.ToString(szFormat);
             }
             String szRequestUrl = "http://localhost:8080/UseLogs?mSW={0}&st={1}&ed={2}&format={3}";
-            String szFormat = "yyyy-MM-dd";
-            String szStDate = m_hStDateBox.SelectedDate.Value.ToString(szFormat);
-            String szEdDate = m_hEdDateBox.SelectedDate.Value.ToString(szFormat);
             String szSW = UserDataDAO.CreateSW();
 
             szRequestUrl = String.Format(szRequestUrl, szSW, szStDate, szEdDate, szFormat);
@@ -143,6 +148,18 @@ namespace AwsUserLogClient
         {
             AwsLog_Transmit log = (AwsLog_Transmit)m_hLogViewer.SelectedItem;
             m_hDetailbox.Text = "详细：" + log.mDetail;
+        }
+
+        private void m_hOutputDataBtn_Click(object sender, RoutedEventArgs e)
+        {
+            String szFileName = UserDataDAO.m_pUseLogList.First().mFormatDate + UserDataDAO.m_pUseLogList.Count.ToString() + ".csv";
+            List<String> pContant = new List<string>();
+            foreach (AwsLog_Transmit log in UserDataDAO.m_pUseLogList)
+            {
+                pContant.Add(log.mFormatDate + "," + log.mTitle + "," + log.mFromUser + "," + log.mDetail);
+            }
+            File.WriteAllLines(szFileName, pContant);
+            m_hState.Content = "日志已输出在当前目录，文件名" + szFileName;
         }
     }
 }
