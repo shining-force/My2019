@@ -4,9 +4,10 @@
 // console.log("Nice to meet you " + firstName + " " + lastName);
 // console.log("you are " + _age + " years old ");
 
-var names = ["jack","john","tommy"];
+let myObj = new Object();
+
+myObj.name = "Jack";
+myObj.lastName = "johns";
 
 
-names.forEach(function () {
-    console.log(arg);
-})
+console.log(myObj.name + " " + myObj.lastName);
