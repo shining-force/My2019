@@ -4,10 +4,11 @@
 // console.log("Nice to meet you " + firstName + " " + lastName);
 // console.log("you are " + _age + " years old ");
 
-let myObj = new Object();
 
-myObj.name = "Jack";
-myObj.lastName = "johns";
+// var info = document.getElementById("information");
+// var infoSelector = document.querySelector("#information");
+// var infoSelectorAll = document.querySelectorAll(".special")[0];
+// var infoClassName = document.getElementsByClassName("special")[0];
+// var infoTagName = document.getElementsByTagName("p")[0];
 
 
-console.log(myObj.name + " " + myObj.lastName);
