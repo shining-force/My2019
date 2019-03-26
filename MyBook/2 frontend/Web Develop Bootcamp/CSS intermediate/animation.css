@@ -1,0 +1,6 @@
+/*div:hover{*/
+    /*background: purple;*/
+/*}*/
+input:focus{
+    color:red;
+}
