@@ -40,8 +40,35 @@
 // },1000)
 //
 
-console.log("first")
+// console.log("first")
+//
+// setInterval(function () {
+//     console.log("second");
+// },0)
 
-setInterval(function () {
-    console.log("second");
-},0)
+//JSON请求
+var btn_gen_pic = document.querySelector("#btn_gen_pic");
+var img_picture = document.querySelector("#img_picture");
+btn_gen_pic.addEventListener("click",function () {
+    var xmlHttpRequest = new XMLHttpRequest();
+    xmlHttpRequest.onreadystatechange = function () {
+        if(this.readyState == 4){
+            var answer = this.responseText;
+            var data = JSON.parse(answer);
+            img_picture.setAttribute("src",data.message);
+            console.log(data.message);
+        }
+    }
+
+    xmlHttpRequest.open("get","https://dog.ceo/api/breeds/image/random");
+    xmlHttpRequest.send();
+
+});
+
+fetch().then(function (res) {
+
+}).catch(function (error) {
+
+});
+
+JSON.stringify
