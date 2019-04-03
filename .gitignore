@@ -25,3 +25,6 @@ hs_err_pid*
 /AwsUserLogClient/.vs/AwsUserLogClient/v15
 /AwsUserLogClient/AwsUserLogClient/bin/Debug
 /AwsUserLogClient/AwsUserLogClient/obj/Debug
+/ImageTransmission/ImageUploader/.vs/ImageUploader/v15
+/ImageTransmission/ImageUploader/ImageUploader/bin/Debug
+/ImageTransmission/ImageUploader/ImageUploader/obj/Debug
