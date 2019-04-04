@@ -1,8 +1,8 @@
-﻿<Application x:Class="ImageUploader.App"
+﻿<Application x:Class="ImageDownloader.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ImageUploader"
-             StartupUri="UploaderMain.xaml">
+             xmlns:local="clr-namespace:ImageDownloader"
+             StartupUri="DownloaderMain.xaml">
     <Application.Resources>
          
     </Application.Resources>

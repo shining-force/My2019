@@ -35,7 +35,7 @@ namespace ImageUploader
 
 			m_hImageUpdateTimer = new System.Timers.Timer();
 			m_hImageUpdateTimer.Elapsed += new ElapsedEventHandler(Onm_hImageUpdateTimerEvent);
-			m_hImageUpdateTimer.Interval = 100;
+			m_hImageUpdateTimer.Interval = 10;
 			m_hImageUpdateTimer.Start();
 		}
 
@@ -68,10 +68,8 @@ namespace ImageUploader
                 m_hImageShow.Source = image;
             }));
 
-
-
             //upload
-            String szRequestUrl = "http://127.0.0.1:8080/image-service-0.0.1/upload";
+            String szRequestUrl = "http://127.0.0.1:8080/upload";
             HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
             hRequest.Method = "POST";
             hRequest.ContentType = "application/json";
@@ -85,11 +83,16 @@ namespace ImageUploader
             jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             string json = JsonConvert.SerializeObject(pkg, jsSettings);
 
-            Stream req = hRequest.GetRequestStream();
-            byte[] bytes = Encoding.UTF8.GetBytes(json);
-            req.Write(bytes, 0, bytes.Length);
+			try
+			{
+				Stream req = hRequest.GetRequestStream();
+				byte[] bytes = Encoding.UTF8.GetBytes(json);
+				req.Write(bytes, 0, bytes.Length);
 
-            hRequest.BeginGetResponse(new AsyncCallback(LogWriteResponse), hRequest);
+				hRequest.BeginGetResponse(new AsyncCallback(LogWriteResponse), hRequest);
+			}
+			catch(Exception ex) { }
+
 
             //next number
             m_hDao.m_hImageData.m_iImageProgress++;
@@ -107,7 +110,6 @@ namespace ImageUploader
             catch (Exception e)
             {
 
-                return;
             }    
         }
     }

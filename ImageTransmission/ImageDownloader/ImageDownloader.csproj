@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A6E55E1A-6430-4B71-A4F0-0EF8D88802BA}</ProjectGuid>
+    <ProjectGuid>{FBCAF867-9C77-4A14-8141-7BB60F4EF9BD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ImageUploader</RootNamespace>
-    <AssemblyName>ImageUploader</AssemblyName>
+    <RootNamespace>ImageDownloader</RootNamespace>
+    <AssemblyName>ImageDownloader</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,11 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>Json120r1\Bin\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\ImageUploader\ImageUploader\Json120r1\Bin\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,7 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="UploaderMain.xaml">
+    <Page Include="DownloaderMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -66,14 +65,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DAO.cs" />
-    <Compile Include="ImageTransmissionType.cs" />
-    <Compile Include="UploaderMain.xaml.cs">
-      <DependentUpon>UploaderMain.xaml</DependentUpon>
+    <Compile Include="DownloaderMain.xaml.cs">
+      <DependentUpon>DownloaderMain.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImageTransmissionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -98,9 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
