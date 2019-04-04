@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
@@ -14,7 +17,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace ImageUploader
 {
 	/// <summary>
@@ -22,7 +24,7 @@ namespace ImageUploader
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		Timer m_hImageUpdateTimer;
+        System.Timers.Timer m_hImageUpdateTimer;
 		DAO m_hDao;
 		
 		public MainWindow()
@@ -31,40 +33,82 @@ namespace ImageUploader
 
 			InitializeComponent();
 
-			m_hImageUpdateTimer = new Timer();
+			m_hImageUpdateTimer = new System.Timers.Timer();
 			m_hImageUpdateTimer.Elapsed += new ElapsedEventHandler(Onm_hImageUpdateTimerEvent);
-			m_hImageUpdateTimer.Interval = 1000;
+			m_hImageUpdateTimer.Interval = 100;
 			m_hImageUpdateTimer.Start();
-
-			m_hImageShow.Source = m_hDao.m_hImageData.m_hImage;
 		}
 
 		private void Onm_hImageUpdateTimerEvent(object source, ElapsedEventArgs e)
 		{
-			RenderTargetBitmap bmp = new RenderTargetBitmap(100, 100, 96, 96, PixelFormats.Pbgra32); ;
-			DrawingVisual drawingVisual = new DrawingVisual();
-			DrawingContext drawingContext = drawingVisual.RenderOpen();
+            RenderTargetBitmap bmp = new RenderTargetBitmap(240, 100, 96, 96, PixelFormats.Pbgra32);
+            DrawingVisual drawingVisual = new DrawingVisual();
+            DrawingContext drawingContext = drawingVisual.RenderOpen();
 
-			Pen pen = new Pen();
-			pen.Brush = new SolidColorBrush(Color.FromRgb(255, 255, 0));
-			pen.Thickness = 5;
-			drawingContext.DrawLine(pen, new Point(0, 0), new Point(100, 100));
+            SolidColorBrush brush = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+            drawingContext.DrawText(new FormattedText(m_hDao.m_hImageData.m_iImageProgress.ToString(), Thread.CurrentThread.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 32, brush), new Point(0, 0));
 
-			drawingContext.Close();
-			bmp.Render(drawingVisual);
+            drawingContext.Close();
+            bmp.Render(drawingVisual);
 
-			PngBitmapEncoder bitmapEncoder = new PngBitmapEncoder();
-			bitmapEncoder.Frames.Add(BitmapFrame.Create(bmp));
-			bitmapEncoder.Save(m_hDao.m_hImageData.m_hImageStream);
-			m_hDao.m_hImageData.m_hImageStream.Seek(0, SeekOrigin.Begin);
+            PngBitmapEncoder bitmapEncoder = new PngBitmapEncoder();
+            MemoryStream stream = new MemoryStream();
+            bitmapEncoder.Frames.Add(BitmapFrame.Create(bmp));
+            bitmapEncoder.Save(stream);
+            stream.Seek(0, SeekOrigin.Begin);
+            m_hDao.m_hImageData.m_pImageStream = stream.ToArray();
 
-			Dispatcher.Invoke(new Action(delegate
-			{
-				m_hDao.m_hImageData.m_hImage.BeginInit();
-				m_hDao.m_hImageData.m_hImage.CacheOption = BitmapCacheOption.OnLoad;
-				m_hDao.m_hImageData.m_hImage.StreamSource = m_hDao.m_hImageData.m_hImageStream;
-				m_hDao.m_hImageData.m_hImage.EndInit();
-			}));
-		}
-	}
+            Dispatcher.Invoke(new Action(delegate
+            {
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = stream;
+                image.EndInit();
+                m_hImageShow.Source = image;
+            }));
+
+
+
+            //upload
+            String szRequestUrl = "http://127.0.0.1:8080/image-service-0.0.1/upload";
+            HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
+            hRequest.Method = "POST";
+            hRequest.ContentType = "application/json";
+            hRequest.Timeout = 10000;
+
+            ImageTransmissionType pkg = new ImageTransmissionType();
+            pkg.imageProgress = m_hDao.m_hImageData.m_iImageProgress;
+            pkg.imageStream = m_hDao.m_hImageData.m_pImageStream;
+
+            JsonSerializerSettings jsSettings = new JsonSerializerSettings();
+            jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            string json = JsonConvert.SerializeObject(pkg, jsSettings);
+
+            Stream req = hRequest.GetRequestStream();
+            byte[] bytes = Encoding.UTF8.GetBytes(json);
+            req.Write(bytes, 0, bytes.Length);
+
+            hRequest.BeginGetResponse(new AsyncCallback(LogWriteResponse), hRequest);
+
+            //next number
+            m_hDao.m_hImageData.m_iImageProgress++;
+            if (m_hDao.m_hImageData.m_iImageProgress > 10000)
+                m_hDao.m_hImageData.m_iImageProgress = 0;
+        }
+        public void LogWriteResponse(IAsyncResult hAsyncResult)
+        {
+            HttpWebRequest hRequest = hAsyncResult.AsyncState as HttpWebRequest;
+            HttpWebResponse hResult;
+            try
+            {
+                hResult = hRequest.EndGetResponse(hAsyncResult) as HttpWebResponse;
+            }
+            catch (Exception e)
+            {
+
+                return;
+            }    
+        }
+    }
 }

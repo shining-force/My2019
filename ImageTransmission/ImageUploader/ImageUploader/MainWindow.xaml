@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ImageUploader"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="320" Width="480" MaxHeight="320"  MaxWidth="480" ResizeMode="NoResize">
     <Grid>
-		<Image x:Name="m_hImageShow" HorizontalAlignment="Left" Height="177" Margin="211,132,0,0" VerticalAlignment="Top" Width="374"/>
-
-	</Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Red" BorderThickness="5">
+            <Image x:Name="m_hImageShow" Stretch="UniformToFill"/>
+        </Border>
+        
+    </Grid>
 </Window>

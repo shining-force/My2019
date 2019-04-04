@@ -19,11 +19,11 @@ namespace ImageUploader
 		{
 			public ImageData()
 			{
-				m_hImage = new BitmapImage();
-				m_hImageStream = new MemoryStream();
-			}
-			public BitmapImage m_hImage;
-			public MemoryStream m_hImageStream;
+                m_iImageProgress = 0;
+                m_pImageStream = null;
+            }
+            public int m_iImageProgress;
+			public byte[] m_pImageStream;
 		}
 
 		public DAO()
