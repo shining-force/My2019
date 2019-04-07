@@ -24,23 +24,33 @@ namespace ImageDownloader
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		HttpWebRequest hRequest;
 		System.Timers.Timer m_hImageDownloadTimer;
 		public MainWindow()
 		{
+			String szRequestUrl = "http://127.0.0.1:8080/download";
+			//String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/download";
+			hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
+			hRequest.Method = "GET";
+			hRequest.ProtocolVersion = HttpVersion.Version11;
+			hRequest.ContentType = "application/json";
+			hRequest.Timeout = 10000;
 			InitializeComponent();
 			m_hImageDownloadTimer = new System.Timers.Timer();
 			m_hImageDownloadTimer.Elapsed += new ElapsedEventHandler(Onm_hImageDownloadTimerEvent);
-			m_hImageDownloadTimer.Interval = 10;
+			m_hImageDownloadTimer.Interval = 500;
 			m_hImageDownloadTimer.Start();
 		}
 
 		private void Onm_hImageDownloadTimerEvent(object source, ElapsedEventArgs e)
 		{
-			String szRequestUrl = "http://127.0.0.1:8080/download";
-			HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
-			hRequest.Method = "GET";
-			hRequest.ContentType = "application/json";
-			hRequest.Timeout = 10000;
+			//String szRequestUrl = "http://127.0.0.1:8080/download";
+			//String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/download";
+			//HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
+			//hRequest.Method = "GET";
+			//hRequest.Connection = "Keep-Alive";
+			//hRequest.ContentType = "application/json";
+			//hRequest.Timeout = 10000;
 
 			try
 			{
@@ -68,14 +78,17 @@ namespace ImageDownloader
 
 			Dispatcher.Invoke(new Action(delegate
 			{
-				MemoryStream memoryStream = new MemoryStream(pkg.imageStream);
+				if (pkg != null)
+				{
+					MemoryStream memoryStream = new MemoryStream(pkg.imageStream);
 
-				BitmapImage image = new BitmapImage();
-				image.BeginInit();
-				image.CacheOption = BitmapCacheOption.OnLoad;
-				image.StreamSource = memoryStream;
-				image.EndInit();
-				m_hImageShow.Source = image;
+					BitmapImage image = new BitmapImage();
+					image.BeginInit();
+					image.CacheOption = BitmapCacheOption.OnLoad;
+					image.StreamSource = memoryStream;
+					image.EndInit();
+					m_hImageShow.Source = image;
+				}
 			}));
 		}
 	}

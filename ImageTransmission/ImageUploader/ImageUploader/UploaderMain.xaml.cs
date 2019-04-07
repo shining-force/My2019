@@ -26,17 +26,21 @@ namespace ImageUploader
 	{
         System.Timers.Timer m_hImageUpdateTimer;
 		DAO m_hDao;
-		
+		bool m_bThreadStop;
 		public MainWindow()
 		{
 			m_hDao = new DAO();
+			m_bThreadStop = false;
 
 			InitializeComponent();
 
 			m_hImageUpdateTimer = new System.Timers.Timer();
 			m_hImageUpdateTimer.Elapsed += new ElapsedEventHandler(Onm_hImageUpdateTimerEvent);
-			m_hImageUpdateTimer.Interval = 10;
+			m_hImageUpdateTimer.Interval = 1000;
 			m_hImageUpdateTimer.Start();
+
+			Thread thread = new Thread(UploadThread);
+			thread.Start();
 		}
 
 		private void Onm_hImageUpdateTimerEvent(object source, ElapsedEventArgs e)
@@ -45,7 +49,7 @@ namespace ImageUploader
             DrawingVisual drawingVisual = new DrawingVisual();
             DrawingContext drawingContext = drawingVisual.RenderOpen();
 
-            SolidColorBrush brush = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+            SolidColorBrush brush = new SolidColorBrush(Color.FromArgb(255, 100, 200, 150));
             drawingContext.DrawText(new FormattedText(m_hDao.m_hImageData.m_iImageProgress.ToString(), Thread.CurrentThread.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 32, brush), new Point(0, 0));
 
             drawingContext.Close();
@@ -68,49 +72,49 @@ namespace ImageUploader
                 m_hImageShow.Source = image;
             }));
 
-            //upload
-            String szRequestUrl = "http://127.0.0.1:8080/upload";
-            HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
-            hRequest.Method = "POST";
-            hRequest.ContentType = "application/json";
-            hRequest.Timeout = 10000;
-
-            ImageTransmissionType pkg = new ImageTransmissionType();
-            pkg.imageProgress = m_hDao.m_hImageData.m_iImageProgress;
-            pkg.imageStream = m_hDao.m_hImageData.m_pImageStream;
-
-            JsonSerializerSettings jsSettings = new JsonSerializerSettings();
-            jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            string json = JsonConvert.SerializeObject(pkg, jsSettings);
-
-			try
-			{
-				Stream req = hRequest.GetRequestStream();
-				byte[] bytes = Encoding.UTF8.GetBytes(json);
-				req.Write(bytes, 0, bytes.Length);
-
-				hRequest.BeginGetResponse(new AsyncCallback(LogWriteResponse), hRequest);
-			}
-			catch(Exception ex) { }
-
-
-            //next number
-            m_hDao.m_hImageData.m_iImageProgress++;
+			//next number
+			m_hDao.m_hImageData.m_iImageProgress++;
             if (m_hDao.m_hImageData.m_iImageProgress > 10000)
                 m_hDao.m_hImageData.m_iImageProgress = 0;
         }
-        public void LogWriteResponse(IAsyncResult hAsyncResult)
-        {
-            HttpWebRequest hRequest = hAsyncResult.AsyncState as HttpWebRequest;
-            HttpWebResponse hResult;
-            try
-            {
-                hResult = hRequest.EndGetResponse(hAsyncResult) as HttpWebResponse;
-            }
-            catch (Exception e)
-            {
 
-            }    
-        }
+		private void UploadThread()
+		{
+			String szRequestUrl = "http://127.0.0.1:8080/upload";
+			//String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/upload";
+
+			while (m_bThreadStop == false)
+			{
+				Thread.Sleep(1000);
+				HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
+				hRequest.Method = "POST";
+				hRequest.ProtocolVersion = HttpVersion.Version11;
+				hRequest.ContentType = "application/json";
+				hRequest.Timeout = 10000;
+
+				ImageTransmissionType pkg = new ImageTransmissionType();
+				pkg.imageProgress = m_hDao.m_hImageData.m_iImageProgress;
+				pkg.imageStream = m_hDao.m_hImageData.m_pImageStream;
+
+				JsonSerializerSettings jsSettings = new JsonSerializerSettings();
+				string json = JsonConvert.SerializeObject(pkg, jsSettings);
+				byte[] bytes = Encoding.UTF8.GetBytes(json);
+				jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+				
+				try
+				{
+					using (Stream hPostStream = hRequest.GetRequestStream())
+					{
+						hPostStream.Write(bytes, 0, bytes.Length);
+						hPostStream.Close();
+						hPostStream.Dispose();
+					}
+
+					HttpWebResponse httpWebResponse = (HttpWebResponse)hRequest.GetResponse();
+					System.Diagnostics.Debug.WriteLine(httpWebResponse.Headers);
+				}
+				catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex.Message); }
+			}
+		}
     }
 }
