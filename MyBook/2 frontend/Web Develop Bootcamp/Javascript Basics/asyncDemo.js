@@ -47,28 +47,58 @@
 // },0)
 
 //JSON请求
-var btn_gen_pic = document.querySelector("#btn_gen_pic");
-var img_picture = document.querySelector("#img_picture");
-btn_gen_pic.addEventListener("click",function () {
-    var xmlHttpRequest = new XMLHttpRequest();
-    xmlHttpRequest.onreadystatechange = function () {
-        if(this.readyState == 4){
-            var answer = this.responseText;
-            var data = JSON.parse(answer);
-            img_picture.setAttribute("src",data.message);
-            console.log(data.message);
-        }
-    }
+// var btn_gen_pic = document.querySelector("#btn_gen_pic");
+// var img_picture = document.querySelector("#img_picture");
+// btn_gen_pic.addEventListener("click",function () {
+//     var xmlHttpRequest = new XMLHttpRequest();
+//     xmlHttpRequest.onreadystatechange = function () {
+//         if(this.readyState == 4){
+//             var answer = this.responseText;
+//             var data = JSON.parse(answer);
+//             img_picture.setAttribute("src",data.message);
+//             console.log(data.message);
+//         }
+//     }
+//
+//     xmlHttpRequest.open("get","https://dog.ceo/api/breeds/image/random");
+//     xmlHttpRequest.send();
+//
+//
+// fetch().then(function (res) {
+//
+// }).catch(function (error) {
+//
+// });
+//
+// JSON.stringify
+//
+// var p1 = new Promise(function (resolve,reject) {
+//     setTimeout(function () {
+//         console.log("Comeout");
+//         resolve();
+//     },0);
+// }).then(function () {
+//     for(var i=0;i<100;i++)
+//     {
+//         console.log("num:",i);
+//     }
 
-    xmlHttpRequest.open("get","https://dog.ceo/api/breeds/image/random");
-    xmlHttpRequest.send();
+var pushBtn = document.querySelector("#pushBtn");
 
+var allWhiteText = document.querySelectorAll("nav *");
+
+allWhiteText.forEach(function (item,index,arr) {
+    if(item.type == "search")
+        return;
+    item.classList.add("text-light");
 });
 
-fetch().then(function (res) {
-
-}).catch(function (error) {
-
-});
-
-JSON.stringify
+pushBtn.addEventListener("click",function () {
+    var answer = document.querySelector("#answer");
+    var url = "https://opentdb.com/api.php?amount=1";
+    axios.get(url).then(function (res) {
+        answer.innerHTML = res.data.results[0].question;
+    }).catch(function (err) {
+        alert(err);
+    });
+})
