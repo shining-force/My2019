@@ -110,7 +110,11 @@ pushBtn.addEventListener("click",function () {
     });
 })
 
-var x = [1,2,3,4,5,6];
-x.reduce(function (acc,next,index,arr) {
-    return acc  + next;
-},10);
+var myObj = {
+    data:123,
+    info:{
+        printData : function () {
+            console.log(this.data);
+        }
+    }
+};
