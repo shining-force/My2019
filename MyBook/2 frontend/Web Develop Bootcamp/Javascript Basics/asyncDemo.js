@@ -99,6 +99,18 @@ pushBtn.addEventListener("click",function () {
     axios.get(url).then(function (res) {
         answer.innerHTML = res.data.results[0].question;
     }).catch(function (err) {
-        alert(err);
+        if(err.request)
+        {
+            alert("request error");
+        }
+        else
+        {
+            alert("other error");
+        }
     });
 })
+
+var x = [1,2,3,4,5,6];
+x.reduce(function (acc,next,index,arr) {
+    return acc  + next;
+},10);

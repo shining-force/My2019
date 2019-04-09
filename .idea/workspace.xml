@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46b21914-7610-4960-8453-42e034879370" name="Default Changelist" comment="" />
+    <list default="true" id="3ea96fe4-0bf2-446f-9a6c-7a7a4ebd1160" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/Async Javascript.docx" beforeDir="false" afterPath="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/Async Javascript.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/asyncDemo.js" beforeDir="false" afterPath="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/asyncDemo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/javascript 使用要领.docx" beforeDir="false" afterPath="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/javascript 使用要领.docx" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -107,9 +112,64 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="2010146341">
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="2" />
+          <entry key="js" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="2" />
+          <entry key="JavaScript" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="html" value="828" />
+          <entry key="js" value="1837" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="828" />
+          <entry key="JavaScript" value="1837" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.39" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/AsyncJSDemo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/asyncDemo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="104" column="9" lean-forward="true" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -119,6 +179,12 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>id</find>
+      <find>sear</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -145,10 +211,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="46" />
+    <option name="x" value="706" />
     <option name="y" value="25" />
-    <option name="width" value="1320" />
-    <option name="height" value="744" />
+    <option name="width" value="660" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -285,6 +351,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -295,18 +362,33 @@
             <path>
               <item name="My2019" type="b2602c69:ProjectViewProjectNode" />
               <item name="My2019" type="462c0819:PsiDirectoryNode" />
-              <item name="ImageTransmission" type="462c0819:PsiDirectoryNode" />
+              <item name="MyBook" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="My2019" type="b2602c69:ProjectViewProjectNode" />
               <item name="My2019" type="462c0819:PsiDirectoryNode" />
               <item name="MyBook" type="462c0819:PsiDirectoryNode" />
+              <item name="2 frontend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="My2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="My2019" type="462c0819:PsiDirectoryNode" />
+              <item name="MyBook" type="462c0819:PsiDirectoryNode" />
+              <item name="2 frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="Web Develop Bootcamp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="My2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="My2019" type="462c0819:PsiDirectoryNode" />
+              <item name="MyBook" type="462c0819:PsiDirectoryNode" />
+              <item name="2 frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="Web Develop Bootcamp" type="462c0819:PsiDirectoryNode" />
+              <item name="Javascript Basics" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -359,7 +441,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="46b21914-7610-4960-8453-42e034879370" name="Default Changelist" comment="" />
+      <changelist id="3ea96fe4-0bf2-446f-9a6c-7a7a4ebd1160" name="Default Changelist" comment="" />
       <created>1552479619539</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -376,6 +458,7 @@
       <workItem from="1553604381596" duration="3499000" />
       <workItem from="1553691467437" duration="4447000" />
       <workItem from="1554462019654" duration="660000" />
+      <workItem from="1554773890102" duration="3808000" />
     </task>
     <task id="LOCAL-00001" summary="添加Javascript 基础">
       <created>1552488590012</created>
@@ -433,16 +516,24 @@
       <option name="project" value="LOCAL" />
       <updated>1553612486482</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="添加Javascript 基础">
+      <created>1554713787072</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1554713787073</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34204000" />
+    <option name="totallyTimeSpent" value="46336000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17514871" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -453,7 +544,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32577905" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32952693" />
@@ -586,23 +677,20 @@
     <entry file="file://$PROJECT_DIR$/ImageGallery-Frontend-BaseOnBootstrap/index.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/asyncDemo.js">
+    <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/AsyncJSDemo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1121">
-          <caret line="59" column="9" lean-forward="true" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+        <state relative-caret-position="285">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/AsyncJSDemo.html">
+    <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/asyncDemo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="91">
+          <caret line="104" column="9" lean-forward="true" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
         </state>
       </provider>
     </entry>
