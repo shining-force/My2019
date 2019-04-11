@@ -82,41 +82,50 @@
 //     {
 //         console.log("num:",i);
 //     }
+//
+// var pushBtn = document.querySelector("#pushBtn");
+//
+// var allWhiteText = document.querySelectorAll("nav *");
+//
+// allWhiteText.forEach(function (item,index,arr) {
+//     if(item.type == "search")
+//         return;
+//     item.classList.add("text-light");
+// });
+//
+// pushBtn.addEventListener("click",function () {
+//     var answer = document.querySelector("#answer");
+//     var url = "https://opentdb.com/api.php?amount=1";
+//     axios.get(url).then(function (res) {
+//         answer.innerHTML = res.data.results[0].question;
+//     }).catch(function (err) {
+//         if(err.request)
+//         {
+//             alert("request error");
+//         }
+//         else
+//         {
+//             alert("other error");
+//         }
+//     });
+// })
+//
+// var myObj = {
+//     data:123,
+//     info:{
+//         printData : function () {
+//             console.log(this.data);
+//         }
+//     }
+// };
 
-var pushBtn = document.querySelector("#pushBtn");
+function Person(firstName,lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
 
-var allWhiteText = document.querySelectorAll("nav *");
+function student(firstName,lastName) {
+    return Person.call(this,arguments);
+}
 
-allWhiteText.forEach(function (item,index,arr) {
-    if(item.type == "search")
-        return;
-    item.classList.add("text-light");
-});
-
-pushBtn.addEventListener("click",function () {
-    var answer = document.querySelector("#answer");
-    var url = "https://opentdb.com/api.php?amount=1";
-    axios.get(url).then(function (res) {
-        answer.innerHTML = res.data.results[0].question;
-    }).catch(function (err) {
-        if(err.request)
-        {
-            alert("request error");
-        }
-        else
-        {
-            alert("other error");
-        }
-    });
-})
-
-var myObj = {
-    data:123,
-    info:{
-        printData : function () {
-            console.log(this.data);
-        }
-    }
-};
-
-
+student.prototype = Object.create(Person.prototype);

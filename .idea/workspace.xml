@@ -1,7 +1,330 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ea96fe4-0bf2-446f-9a6c-7a7a4ebd1160" name="Default Changelist" comment="" />
+    <list default="true" id="3ea96fe4-0bf2-446f-9a6c-7a7a4ebd1160" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/MyBook/3 backend/Express Basics/Express的基本使用.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/.bin/mime" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/accepts/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/accepts/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/accepts/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/accepts/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/accepts/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/array-flatten/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/array-flatten/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/array-flatten/array-flatten.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/array-flatten/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/body-parser/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/body-parser/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/body-parser/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/body-parser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/body-parser/lib/read.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/body-parser/lib/types/json.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/body-parser/lib/types/raw.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/body-parser/lib/types/text.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/body-parser/lib/types/urlencoded.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/body-parser/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/bytes/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/bytes/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/bytes/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/bytes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/bytes/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/content-disposition/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/content-disposition/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/content-disposition/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/content-disposition/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/content-disposition/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/content-type/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/content-type/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/content-type/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/content-type/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/content-type/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/cookie-signature/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/cookie-signature/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/cookie-signature/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/cookie-signature/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/cookie-signature/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/cookie/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/cookie/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/cookie/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/cookie/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/cookie/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/.coveralls.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/src/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/src/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/src/inspector-log.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/debug/src/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/depd/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/depd/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/depd/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/depd/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/depd/lib/browser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/depd/lib/compat/callsite-tostring.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/depd/lib/compat/event-listener-count.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/depd/lib/compat/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/depd/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/destroy/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/destroy/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/destroy/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/destroy/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ee-first/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ee-first/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ee-first/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ee-first/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/encodeurl/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/encodeurl/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/encodeurl/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/encodeurl/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/encodeurl/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/escape-html/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/escape-html/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/escape-html/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/escape-html/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/etag/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/etag/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/etag/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/etag/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/etag/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/lib/application.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/lib/express.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/lib/middleware/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/lib/middleware/query.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/lib/request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/lib/response.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/lib/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/lib/router/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/lib/router/route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/lib/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/lib/view.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/express/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/finalhandler/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/finalhandler/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/finalhandler/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/finalhandler/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/finalhandler/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/forwarded/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/forwarded/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/forwarded/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/forwarded/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/forwarded/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/fresh/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/fresh/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/fresh/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/fresh/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/fresh/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/http-errors/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/http-errors/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/http-errors/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/http-errors/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/http-errors/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/Changelog.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/dbcs-codec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/dbcs-data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/internal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/sbcs-codec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/sbcs-data-generated.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/sbcs-data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/tables/big5-added.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/tables/cp936.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/tables/cp949.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/tables/cp950.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/tables/eucjp.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/tables/gb18030-ranges.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/tables/gbk-added.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/tables/shiftjis.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/utf16.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/encodings/utf7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/lib/bom-handling.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/lib/extend-node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/lib/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/lib/streams.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/iconv-lite/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/inherits/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/inherits/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/inherits/inherits.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/inherits/inherits_browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/inherits/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ipaddr.js/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ipaddr.js/ipaddr.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ipaddr.js/lib/ipaddr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ipaddr.js/lib/ipaddr.js.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ipaddr.js/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/media-typer/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/media-typer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/media-typer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/media-typer/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/media-typer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/merge-descriptors/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/merge-descriptors/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/merge-descriptors/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/merge-descriptors/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/merge-descriptors/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/methods/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/methods/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/methods/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/methods/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/methods/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime-db/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime-db/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime-db/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime-db/db.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime-db/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime-db/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime-types/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime-types/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime-types/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime-types/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime-types/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime/build/build.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime/build/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime/cli.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime/mime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/mime/types.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ms/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ms/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ms/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/ms/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/negotiator/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/negotiator/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/negotiator/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/negotiator/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/negotiator/lib/charset.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/negotiator/lib/encoding.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/negotiator/lib/language.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/negotiator/lib/mediaType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/negotiator/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/on-finished/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/on-finished/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/on-finished/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/on-finished/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/on-finished/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/parseurl/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/parseurl/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/parseurl/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/parseurl/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/parseurl/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/path-to-regexp/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/path-to-regexp/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/path-to-regexp/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/path-to-regexp/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/path-to-regexp/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/proxy-addr/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/proxy-addr/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/proxy-addr/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/proxy-addr/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/proxy-addr/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/dist/qs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/lib/formats.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/lib/parse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/lib/stringify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/lib/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/test/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/test/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/test/parse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/test/stringify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/qs/test/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/range-parser/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/range-parser/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/range-parser/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/range-parser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/range-parser/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/raw-body/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/raw-body/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/raw-body/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/raw-body/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/raw-body/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/raw-body/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safe-buffer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safe-buffer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safe-buffer/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safe-buffer/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safe-buffer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safer-buffer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safer-buffer/Porting-Buffer.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safer-buffer/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safer-buffer/dangerous.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safer-buffer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safer-buffer/safer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/safer-buffer/tests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/send/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/send/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/send/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/send/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/send/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/serve-static/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/serve-static/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/serve-static/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/serve-static/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/serve-static/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/setprototypeof/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/setprototypeof/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/setprototypeof/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/setprototypeof/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/setprototypeof/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/statuses/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/statuses/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/statuses/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/statuses/codes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/statuses/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/statuses/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/type-is/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/type-is/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/type-is/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/type-is/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/type-is/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/unpipe/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/unpipe/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/unpipe/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/unpipe/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/unpipe/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/utils-merge/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/utils-merge/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/utils-merge/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/utils-merge/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/utils-merge/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/vary/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/vary/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/vary/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/vary/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/node_modules/vary/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TodosAPI/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/asyncDemo.js" beforeDir="false" afterPath="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/asyncDemo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/javascript 使用要领.docx" beforeDir="false" afterPath="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/javascript 使用要领.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -52,23 +375,26 @@
     <session id="1203326732">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cs" value="1" />
           <entry key="css" value="6" />
-          <entry key="html" value="10" />
-          <entry key="js" value="8" />
+          <entry key="html" value="12" />
+          <entry key="js" value="11" />
+          <entry key="json" value="6" />
           <entry key="ts" value="3" />
         </counts>
       </usages-collector>
@@ -76,8 +402,9 @@
         <counts>
           <entry key="C#" value="1" />
           <entry key="CSS" value="6" />
-          <entry key="HTML" value="10" />
-          <entry key="JavaScript" value="8" />
+          <entry key="HTML" value="12" />
+          <entry key="JSON" value="6" />
+          <entry key="JavaScript" value="11" />
           <entry key="TypeScript" value="3" />
         </counts>
       </usages-collector>
@@ -86,7 +413,8 @@
           <entry key="cs" value="94" />
           <entry key="css" value="145" />
           <entry key="html" value="788" />
-          <entry key="js" value="3017" />
+          <entry key="js" value="3667" />
+          <entry key="json" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -94,7 +422,8 @@
           <entry key="C#" value="94" />
           <entry key="CSS" value="145" />
           <entry key="HTML" value="788" />
-          <entry key="JavaScript" value="3017" />
+          <entry key="JSON" value="18" />
+          <entry key="JavaScript" value="3667" />
         </counts>
       </usages-collector>
     </session>
@@ -143,26 +472,10 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/asyncDemo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="114" column="10" lean-forward="true" selection-start-line="114" selection-start-column="10" selection-end-line="114" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/AsyncJSDemo.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/TodosAPI/index.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -172,6 +485,7 @@
       <list>
         <option value="CSS File" />
         <option value="HTML File" />
+        <option value="package.json" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -197,6 +511,8 @@
         <option value="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/CSS intermediate/CSSAnimation.html" />
         <option value="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/AsyncJSDemo.html" />
         <option value="$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/asyncDemo.js" />
+        <option value="$PROJECT_DIR$/TodosAPI/package.json" />
+        <option value="$PROJECT_DIR$/TodosAPI/index.js" />
       </list>
     </option>
   </component>
@@ -206,11 +522,19 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/TodosAPI/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/TodosAPI/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="706" />
+    <option name="x" value="47" />
     <option name="y" value="25" />
-    <option name="width" value="660" />
-    <option name="height" value="741" />
+    <option name="width" value="650" />
+    <option name="height" value="555" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -237,6 +561,9 @@
           </State>
           <State>
             <id>Cucumber</id>
+          </State>
+          <State>
+            <id>DOM issuesJavaScript</id>
           </State>
           <State>
             <id>Dart</id>
@@ -338,6 +665,11 @@
             <id>docker-compose</id>
           </State>
         </expanded-state>
+        <selected-state>
+          <State>
+            <id>Angular</id>
+          </State>
+        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -347,6 +679,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -380,22 +713,40 @@
               <item name="Web Develop Bootcamp" type="462c0819:PsiDirectoryNode" />
               <item name="Javascript Basics" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="My2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="My2019" type="462c0819:PsiDirectoryNode" />
+              <item name="MyBook" type="462c0819:PsiDirectoryNode" />
+              <item name="3 backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="My2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="My2019" type="462c0819:PsiDirectoryNode" />
+              <item name="MyBook" type="462c0819:PsiDirectoryNode" />
+              <item name="3 backend" type="462c0819:PsiDirectoryNode" />
+              <item name="Express Basics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="My2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="My2019" type="462c0819:PsiDirectoryNode" />
+              <item name="TodosAPI" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="/usr/share/npm/bin" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="nodejs_package_manager_path" value="/usr/share/npm" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -408,29 +759,6 @@
         </RuleState>
       </list>
     </option>
-  </component>
-  <component name="RunManager" selected="JavaScript Debug.AsyncJSDemo.html">
-    <configuration name="AsyncJSDemo.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/My2019/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/AsyncJSDemo.html">
-      <method v="2" />
-    </configuration>
-    <configuration name="CSSAnimation.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/My2019/MyBook/2 frontend/Web Develop Bootcamp/CSS intermediate/CSSAnimation.html">
-      <method v="2" />
-    </configuration>
-    <configuration name="includeJS.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/My2019/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/includeJS.html">
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="JavaScript Debug.includeJS.html" />
-      <item itemvalue="JavaScript Debug.CSSAnimation.html" />
-      <item itemvalue="JavaScript Debug.AsyncJSDemo.html" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JavaScript Debug.AsyncJSDemo.html" />
-        <item itemvalue="JavaScript Debug.CSSAnimation.html" />
-        <item itemvalue="JavaScript Debug.includeJS.html" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -456,6 +784,9 @@
       <workItem from="1554462019654" duration="660000" />
       <workItem from="1554773890102" duration="3859000" />
       <workItem from="1554786046928" duration="5097000" />
+      <workItem from="1554894914495" duration="58000" />
+      <workItem from="1554898899371" duration="4723000" />
+      <workItem from="1554906273207" duration="839000" />
     </task>
     <task id="LOCAL-00001" summary="添加Javascript 基础">
       <created>1552488590012</created>
@@ -534,27 +865,43 @@
       <option name="project" value="LOCAL" />
       <updated>1554795417917</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="添加Javascript 基础">
+      <created>1554822033071</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1554822033072</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51484000" />
+    <option name="totallyTimeSpent" value="60342000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="47" y="25" width="1319" height="743" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22916667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32952693" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39967373" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.24713585" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32952693" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" weight="0.32952693" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32626426" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32952693" />
@@ -687,22 +1034,32 @@
     <entry file="file://$PROJECT_DIR$/ImageGallery-Frontend-BaseOnBootstrap/index.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/AsyncJSDemo.html">
+    <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/asyncDemo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="193">
+          <caret line="124" column="1" lean-forward="true" selection-start-line="124" selection-start-column="1" selection-end-line="124" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/asyncDemo.js">
+    <entry file="file://$PROJECT_DIR$/MyBook/2 frontend/Web Develop Bootcamp/Javascript Basics/AsyncJSDemo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="114" column="10" lean-forward="true" selection-start-line="114" selection-start-column="10" selection-end-line="114" selection-end-column="10" />
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TodosAPI/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TodosAPI/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
