@@ -10,8 +10,7 @@ public class Controller {
     private ImageData imageData;
 
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
-    public ResponseEntity<String> upload(@RequestBody ImageTransmissionType image)
-    {
+    public ResponseEntity<String> upload(@RequestBody ImageTransmissionType image){
         imageData.imageProgress = image.imageProgress;
         imageData.imageStream = image.imageStream;
 
@@ -19,8 +18,7 @@ public class Controller {
     }
 
     @RequestMapping(path = "/download", method = RequestMethod.GET)
-    public ResponseEntity<ImageTransmissionType> download()
-    {
+    public ResponseEntity<ImageTransmissionType> download(){
         ImageTransmissionType transmissionType = new ImageTransmissionType();
         transmissionType.imageProgress = imageData.imageProgress;
         transmissionType.imageStream = imageData.imageStream;
