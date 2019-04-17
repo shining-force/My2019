@@ -24,18 +24,12 @@ namespace ImageDownloader
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		HttpWebRequest hRequest;
 		System.Timers.Timer m_hImageDownloadTimer;
+        int m_iCurrentPic;
 		public MainWindow()
 		{
-			String szRequestUrl = "http://127.0.0.1:8080/download";
-			//String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/download";
-			hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
-			hRequest.Method = "GET";
-			hRequest.ProtocolVersion = HttpVersion.Version11;
-			hRequest.ContentType = "application/json";
-			hRequest.Timeout = 10000;
-			InitializeComponent();
+            m_iCurrentPic = 0;
+            InitializeComponent();
 			m_hImageDownloadTimer = new System.Timers.Timer();
 			m_hImageDownloadTimer.Elapsed += new ElapsedEventHandler(Onm_hImageDownloadTimerEvent);
 			m_hImageDownloadTimer.Interval = 500;
@@ -44,19 +38,18 @@ namespace ImageDownloader
 
 		private void Onm_hImageDownloadTimerEvent(object source, ElapsedEventArgs e)
 		{
-			//String szRequestUrl = "http://127.0.0.1:8080/download";
-			//String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/download";
-			//HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
-			//hRequest.Method = "GET";
-			//hRequest.Connection = "Keep-Alive";
-			//hRequest.ContentType = "application/json";
-			//hRequest.Timeout = 10000;
+            //String szRequestUrl = "http://127.0.0.1:8080/download";
+            String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/download";
+            HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
+            hRequest.Method = "GET";
+            hRequest.ContentType = "application/json";
+            hRequest.Timeout = 10000;
 
-			try
+            try
 			{
 				hRequest.BeginGetResponse(new AsyncCallback(DownloadResponse), hRequest);
 			}
-			catch(Exception ex) { }
+			catch(Exception ex) { System.Diagnostics.Debug.WriteLine(ex.Message); }
 		}
 
 		public void DownloadResponse(IAsyncResult hAsyncResult)
@@ -69,27 +62,30 @@ namespace ImageDownloader
 			}
 			catch (Exception e)
 			{
-				return;
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                return;
 			}
 			StreamReader hReader = new StreamReader(hResult.GetResponseStream());
 			String szResult = hReader.ReadToEnd();
 			ImageTransmissionType pkg = JsonConvert.DeserializeObject<ImageTransmissionType>(szResult);
-
-
-			Dispatcher.Invoke(new Action(delegate
+            if(pkg.imageProgress < m_iCurrentPic)
+                return;
+			if (pkg != null)
 			{
-				if (pkg != null)
-				{
-					MemoryStream memoryStream = new MemoryStream(pkg.imageStream);
+			    Dispatcher.Invoke(new Action(delegate
+			    {
 
-					BitmapImage image = new BitmapImage();
-					image.BeginInit();
-					image.CacheOption = BitmapCacheOption.OnLoad;
-					image.StreamSource = memoryStream;
-					image.EndInit();
-					m_hImageShow.Source = image;
-				}
-			}));
+					    MemoryStream memoryStream = new MemoryStream(pkg.imageStream);
+
+					    BitmapImage image = new BitmapImage();
+					    image.BeginInit();
+					    image.CacheOption = BitmapCacheOption.OnLoad;
+					    image.StreamSource = memoryStream;
+					    image.EndInit();
+					    m_hImageShow.Source = image;
+				
+			    }));
+            }
 		}
 	}
 }

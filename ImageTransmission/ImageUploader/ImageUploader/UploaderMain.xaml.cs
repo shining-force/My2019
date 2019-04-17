@@ -24,26 +24,27 @@ namespace ImageUploader
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-        System.Timers.Timer m_hImageUpdateTimer;
-		DAO m_hDao;
-		bool m_bThreadStop;
+        System.Timers.Timer m_hImageCreatorTimer;
+        System.Timers.Timer m_hImageUploaderTimer;
+        DAO m_hDao;
 		public MainWindow()
 		{
 			m_hDao = new DAO();
-			m_bThreadStop = false;
 
 			InitializeComponent();
 
-			m_hImageUpdateTimer = new System.Timers.Timer();
-			m_hImageUpdateTimer.Elapsed += new ElapsedEventHandler(Onm_hImageUpdateTimerEvent);
-			m_hImageUpdateTimer.Interval = 1000;
-			m_hImageUpdateTimer.Start();
+			m_hImageCreatorTimer = new System.Timers.Timer();
+			m_hImageCreatorTimer.Elapsed += new ElapsedEventHandler(Onm_hImageCreatorTimerEvent);
+			m_hImageCreatorTimer.Interval = 20;
+			m_hImageCreatorTimer.Start();
 
-			Thread thread = new Thread(UploadThread);
-			thread.Start();
-		}
+            m_hImageUploaderTimer = new System.Timers.Timer();
+            m_hImageUploaderTimer.Elapsed += new ElapsedEventHandler(Onm_hImageUploaderTimerEvent);
+            m_hImageUploaderTimer.Interval = 20;
+            m_hImageUploaderTimer.Start();
+        }
 
-		private void Onm_hImageUpdateTimerEvent(object source, ElapsedEventArgs e)
+		private void Onm_hImageCreatorTimerEvent(object source, ElapsedEventArgs e)
 		{
             RenderTargetBitmap bmp = new RenderTargetBitmap(240, 100, 96, 96, PixelFormats.Pbgra32);
             DrawingVisual drawingVisual = new DrawingVisual();
@@ -78,43 +79,63 @@ namespace ImageUploader
                 m_hDao.m_hImageData.m_iImageProgress = 0;
         }
 
-		private void UploadThread()
-		{
-			String szRequestUrl = "http://127.0.0.1:8080/upload";
-			//String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/upload";
+        private void Onm_hImageUploaderTimerEvent(object source, ElapsedEventArgs e)
+        {
+            //String szRequestUrl = "http://127.0.0.1:8080/upload";
+            String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/upload";
 
-			while (m_bThreadStop == false)
-			{
-				Thread.Sleep(1000);
-				HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
-				hRequest.Method = "POST";
-				hRequest.ProtocolVersion = HttpVersion.Version11;
-				hRequest.ContentType = "application/json";
-				hRequest.Timeout = 10000;
+            HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
+			hRequest.Method = "POST";
+			hRequest.ContentType = "application/json";
+			hRequest.Timeout = 1000;
 
-				ImageTransmissionType pkg = new ImageTransmissionType();
-				pkg.imageProgress = m_hDao.m_hImageData.m_iImageProgress;
-				pkg.imageStream = m_hDao.m_hImageData.m_pImageStream;
 
-				JsonSerializerSettings jsSettings = new JsonSerializerSettings();
-				string json = JsonConvert.SerializeObject(pkg, jsSettings);
-				byte[] bytes = Encoding.UTF8.GetBytes(json);
-				jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 				
-				try
-				{
-					using (Stream hPostStream = hRequest.GetRequestStream())
-					{
-						hPostStream.Write(bytes, 0, bytes.Length);
-						hPostStream.Close();
-						hPostStream.Dispose();
-					}
-
-					HttpWebResponse httpWebResponse = (HttpWebResponse)hRequest.GetResponse();
-					System.Diagnostics.Debug.WriteLine(httpWebResponse.Headers);
-				}
-				catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex.Message); }
+			try
+			{
+                hRequest.BeginGetRequestStream(RequestSteamResponse, hRequest);
 			}
+			catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex.Message); }			
 		}
+
+        public void RequestSteamResponse(IAsyncResult hAsyncResult)
+        {
+            HttpWebRequest hRequest = hAsyncResult.AsyncState as HttpWebRequest;
+
+            ImageTransmissionType pkg = new ImageTransmissionType();
+            pkg.imageProgress = m_hDao.m_hImageData.m_iImageProgress;
+            pkg.imageStream = m_hDao.m_hImageData.m_pImageStream;
+
+            JsonSerializerSettings jsSettings = new JsonSerializerSettings();
+            string json = JsonConvert.SerializeObject(pkg, jsSettings);
+            byte[] bytes = Encoding.UTF8.GetBytes(json);
+            jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
+            try
+            {
+                using (Stream hPostStream = hRequest.EndGetRequestStream(hAsyncResult))
+                {
+                    hPostStream.Write(bytes, 0, bytes.Length);
+                    hPostStream.Close();
+                }
+                hRequest.BeginGetResponse(UploaderResponse, hRequest);
+            }
+            catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex.Message); }
+
+        }
+
+        public void UploaderResponse(IAsyncResult hAsyncResult)
+        {
+            HttpWebRequest hRequest = hAsyncResult.AsyncState as HttpWebRequest;
+            HttpWebResponse hResult;
+            try
+            {
+                hResult = hRequest.EndGetResponse(hAsyncResult) as HttpWebResponse;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+        }
     }
 }
