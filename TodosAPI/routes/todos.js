@@ -15,7 +15,8 @@ router.get("/",function (req,res) {
 router.post('/',function (req,res) {
     db.Todo.create(req.body)
         .then(function (newTodo) {
-            res.status(201)/*设置返回状态码*/.json(newTodo);
+            db.Todo.create(newTodo);
+            res.status(200)/*设置返回状态码*/.json(newTodo);
         }).catch(function (err) {
             res.send(err);
     })
