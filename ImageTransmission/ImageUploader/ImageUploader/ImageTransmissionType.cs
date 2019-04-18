@@ -11,12 +11,12 @@ namespace ImageUploader
 {
     public class ImageTransmissionType
     {
-        public String m_szImageProgress;
+        public int m_szImageProgress;
         public List<byte[]> m_pImgStreamGrp;
 
         public ImageTransmissionType(List<byte[]> pDataGrp, int iProgress)
         {
-            m_szImageProgress = iProgress.ToString();
+            m_szImageProgress = iProgress;
 
             using (Stream objectStream = new MemoryStream())
             {

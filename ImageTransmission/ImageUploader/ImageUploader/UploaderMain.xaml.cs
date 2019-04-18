@@ -89,10 +89,10 @@ namespace ImageUploader
         {
 
 
-            //String szRequestUrl = "http://127.0.0.1:8080/upload";
-            String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/upload";
+			//String szRequestUrl = "http://127.0.0.1:8080/upload";
+			String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/upload";
 
-            HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
+			HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
 			hRequest.Method = "POST";
 			hRequest.ContentType = "application/json";
 			hRequest.Timeout = 1000;
@@ -131,13 +131,13 @@ namespace ImageUploader
         {
             HttpWebRequest hRequest = hAsyncResult.AsyncState as HttpWebRequest;
             HttpWebResponse hResult;
-            String szProgress;
+            int iProgress;
             try
             {
                 hResult = hRequest.EndGetResponse(hAsyncResult) as HttpWebResponse;
                 StreamReader hReader = new StreamReader(hResult.GetResponseStream());
                 String szResult = hReader.ReadToEnd();
-                szProgress = JsonConvert.DeserializeObject<String>(szResult);
+                iProgress = JsonConvert.DeserializeObject<int>(szResult);
             }
             catch (Exception e)
             {
@@ -146,7 +146,7 @@ namespace ImageUploader
             }
             Dispatcher.Invoke(new Action(delegate
             {
-                m_hUploadProgress.Text = szProgress;
+                m_hUploadProgress.Text = iProgress.ToString();
             }));
 
         }

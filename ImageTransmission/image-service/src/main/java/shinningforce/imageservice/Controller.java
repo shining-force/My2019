@@ -10,7 +10,7 @@ public class Controller {
     private ImageData mImageData;
 
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
-    public ResponseEntity<String> upload(@RequestBody ImageTransmissionType image){
+    public ResponseEntity<Integer> upload(@RequestBody ImageTransmissionType image){
         mImageData.mImageQueue.add(image);
         if(mImageData.mImageQueue.size() > 5){
             mImageData.mImageQueue.poll();
@@ -20,10 +20,19 @@ public class Controller {
     }
 
     @RequestMapping(path = "/download", method = RequestMethod.GET)
-    public ResponseEntity<ImageTransmissionType> download(){
+    public ResponseEntity<ImageTransmissionType> download(@RequestParam(name = "imgProgress", defaultValue = "0")int imgProgress){
         ImageTransmissionType transmissionType = null;
-        if(mImageData.mImageQueue.size() > 0){
-            transmissionType = mImageData.mImageQueue.poll();
+        for (ImageTransmissionType img:
+             mImageData.mImageQueue) {
+            if(img.mImageProgress > imgProgress){
+                if(transmissionType != null){
+                    if(img.mImageProgress < transmissionType.mImageProgress){
+                        transmissionType = img;
+                    }
+                }else{
+                    transmissionType = img;
+                }
+            }
         }
 
         return ResponseEntity.ok().body(transmissionType);
