@@ -2,9 +2,10 @@ package shinningforce.imageservice;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 @Repository
 public class ImageData {
-    public int imageProgress;
-    public byte[] imageStream;
-    public boolean lock;
+    int mNewest;
+    public ConcurrentLinkedQueue<ImageTransmissionType> mImageQueue = new ConcurrentLinkedQueue<>();
 }

@@ -7,21 +7,25 @@ import org.springframework.http.ResponseEntity;
 @RestController
 public class Controller {
     @Autowired
-    private ImageData imageData;
+    private ImageData mImageData;
 
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
     public ResponseEntity<String> upload(@RequestBody ImageTransmissionType image){
-        imageData.imageProgress = image.imageProgress;
-        imageData.imageStream = image.imageStream;
+        mImageData.mImageQueue.add(image);
+        if(mImageData.mImageQueue.size() > 5){
+            mImageData.mImageQueue.poll();
+        }
 
-        return ResponseEntity.ok().body(null);
+        return ResponseEntity.ok().body(image.mImageProgress);
     }
 
     @RequestMapping(path = "/download", method = RequestMethod.GET)
     public ResponseEntity<ImageTransmissionType> download(){
-        ImageTransmissionType transmissionType = new ImageTransmissionType();
-        transmissionType.imageProgress = imageData.imageProgress;
-        transmissionType.imageStream = imageData.imageStream;
+        ImageTransmissionType transmissionType = null;
+        if(mImageData.mImageQueue.size() > 0){
+            transmissionType = mImageData.mImageQueue.poll();
+        }
+
         return ResponseEntity.ok().body(transmissionType);
     }
 }

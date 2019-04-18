@@ -8,8 +8,8 @@ namespace ImageDownloader
 {
     public class ImageTransmissionType
     {
-        public int imageProgress;
-        public byte[] imageStream;
+        public String m_szImageProgress;
+        public List<byte[]> m_pImgStreamGrp;
     }
 
 }
