@@ -25,7 +25,7 @@ namespace ImageDownloader
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-        int m_iTotalProgress;
+        int m_iCurrentTimeStamp;
         Queue<byte[]> m_pImgDataGrp;
 
         Thread m_hImgShowFunc;
@@ -34,7 +34,7 @@ namespace ImageDownloader
 
         public MainWindow()
 		{
-            m_iTotalProgress = 0;
+            m_iCurrentTimeStamp = DateTime.Now.to;
             m_pImgDataGrp = new Queue<byte[]>();
 
             m_hImgShowFunc = new Thread(ImgShowFunc);
@@ -50,14 +50,14 @@ namespace ImageDownloader
 
 		private void DownloadImgDataFunc()
 		{
-			//String szRequestUrl = "http://127.0.0.1:8080/download";
-			String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/download";
-			while (m_bRunning)
+            //String szRequestUrl = "http://127.0.0.1:8080/download";
+            String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/download";
+            while (m_bRunning)
 			{
-				HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl + "?imgProgress=" + m_iTotalProgress.ToString());
+				HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl + "?imgProgress=" + m_iCurrentTimeStamp.ToString());
 				hRequest.Method = "GET";
 				hRequest.ContentType = "application/json";
-				hRequest.Timeout = 250;
+				hRequest.Timeout = 500;
 
 				HttpWebResponse hResult;
 				try
@@ -70,21 +70,37 @@ namespace ImageDownloader
 					continue;
 				}
 				StreamReader hReader = new StreamReader(hResult.GetResponseStream());
-				String szResult = hReader.ReadToEnd();
-				ImageTransmissionType pkg = JsonConvert.DeserializeObject<ImageTransmissionType>(szResult);
-				if (pkg != null)
-				{
-					if (pkg.m_szImageProgress < m_iTotalProgress)
-						continue;
+                ImageTransmissionType pkg;
+                try
+                {
+                    String szResult = hReader.ReadToEnd();
+                    pkg = JsonConvert.DeserializeObject<ImageTransmissionType>(szResult);
+                }
+                catch (Exception e)
+                {
+                    System.Diagnostics.Debug.WriteLine(e.Message);
+                    continue;
+                }
 
-					m_iTotalProgress = pkg.m_szImageProgress;
-					m_bUpdate = false;
-					foreach (byte[] img in pkg.m_pImgStreamGrp)
-					{
-						m_pImgDataGrp.Enqueue(img);
-					}
-					m_bUpdate = true;
-				}
+                if (pkg != null)
+                {
+                    m_iCurrentTimeStamp = pkg.m_iTimeStamp;
+                    m_bUpdate = false;
+                    foreach (byte[] img in pkg.m_pImgStreamGrp)
+                    {
+                        m_pImgDataGrp.Enqueue(img);
+                    }
+                    m_bUpdate = true;
+                }
+                else
+                {
+                    if (m_pImgDataGrp.Count < 1)
+                    {
+                        m_iCurrentTimeStamp = 0;
+                    }
+                }
+
+                Thread.Sleep(50);
 			}
 		}
 
@@ -128,33 +144,34 @@ namespace ImageDownloader
                 {
                     byte[] img = m_pImgDataGrp.Dequeue();
 					MemoryStream memoryStream = new MemoryStream(img);
-
+                    
                     Dispatcher.Invoke(new Action(delegate
-                    {  
-                        BitmapImage image = new BitmapImage();
-                        image.BeginInit();
-                        image.CacheOption = BitmapCacheOption.OnLoad;
-                        image.StreamSource = memoryStream;
-                        image.EndInit();
-                        m_hImageShow.Source = image;
+                    {
+                        JpegBitmapDecoder hJepgDecoder = new JpegBitmapDecoder(memoryStream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
+                        BitmapSource bitmapSource = hJepgDecoder.Frames[0];
+                        m_hImageShow.Source = bitmapSource;
 
                     }));
-					if (m_pImgDataGrp.Count < 10)
-					{
-						Thread.Sleep(50 + 300 / (m_pImgDataGrp.Count + 1));
-					}
-					else
-					{
-						Thread.Sleep(50);
-					}                                 
+                    if (m_pImgDataGrp.Count < 10)
+                    {
+                        Thread.Sleep(50 + 300 / (m_pImgDataGrp.Count + 1));
+                    }
+                    else if (m_pImgDataGrp.Count > 60)
+                    {
+                        Thread.Sleep(50 - m_pImgDataGrp.Count / 5);
+                    }
+                    else
+                    {
+                        Thread.Sleep(50);
+                    }                                 
                 }
             }
 
         }
 
-		private void Window_Unloaded(object sender, RoutedEventArgs e)
-		{
-			m_bRunning = false;
-		}
-	}
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            m_bRunning = false;
+        }
+    }
 }

@@ -11,6 +11,13 @@ public class Controller {
 
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
     public ResponseEntity<Integer> upload(@RequestBody ImageTransmissionType image){
+        for (ImageTransmissionType img:
+                mImageData.mImageQueue){
+            if(image.mImageProgress < img.mImageProgress){
+                mImageData.mImageQueue.clear();
+                break;
+            }
+        }
         mImageData.mImageQueue.add(image);
         if(mImageData.mImageQueue.size() > 5){
             mImageData.mImageQueue.poll();
