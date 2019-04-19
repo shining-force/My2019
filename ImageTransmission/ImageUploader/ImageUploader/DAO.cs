@@ -14,25 +14,14 @@ namespace ImageUploader
 		{
 
 		}
-
-		public class ImageData
+        public DAO()
 		{
-			public ImageData()
-			{
-                m_iImageProgress = 0;
-                m_pImageStream = null;
-            }
-            public int m_iImageProgress;
-			public byte[] m_pImageStream;
-		}
+            m_hSettings = new Settings();
+            m_pImgDataGrp = new List<byte[]>();
+        }
 
-		public DAO()
-		{
-			m_hImageData = new ImageData();
-			m_hSettings = new Settings();
-		}
-
-		public Settings m_hSettings;
-		public ImageData m_hImageData;
-	}
+        public Settings m_hSettings;
+        public List<byte[]> m_pImgDataGrp;
+        public ImageTransmissionType m_hImgPkg;
+    }
 }

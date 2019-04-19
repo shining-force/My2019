@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -25,7 +27,7 @@ namespace ImageUploader
 	public partial class MainWindow : Window
 	{
         System.Timers.Timer m_hImageCreatorTimer;
-        System.Timers.Timer m_hImageUploaderTimer;
+        int m_iImageNum;
         DAO m_hDao;
 		public MainWindow()
 		{
@@ -35,52 +37,70 @@ namespace ImageUploader
 
 			m_hImageCreatorTimer = new System.Timers.Timer();
 			m_hImageCreatorTimer.Elapsed += new ElapsedEventHandler(Onm_hImageCreatorTimerEvent);
-			m_hImageCreatorTimer.Interval = 20;
+			m_hImageCreatorTimer.Interval = 50;
 			m_hImageCreatorTimer.Start();
 
-            m_hImageUploaderTimer = new System.Timers.Timer();
-            m_hImageUploaderTimer.Elapsed += new ElapsedEventHandler(Onm_hImageUploaderTimerEvent);
-            m_hImageUploaderTimer.Interval = 20;
-            m_hImageUploaderTimer.Start();
+            m_iImageNum = 0;
         }
-
-		private void Onm_hImageCreatorTimerEvent(object source, ElapsedEventArgs e)
-		{
-            RenderTargetBitmap bmp = new RenderTargetBitmap(240, 100, 96, 96, PixelFormats.Pbgra32);
-            DrawingVisual drawingVisual = new DrawingVisual();
-            DrawingContext drawingContext = drawingVisual.RenderOpen();
-
-            SolidColorBrush brush = new SolidColorBrush(Color.FromArgb(255, 100, 200, 150));
-            drawingContext.DrawText(new FormattedText(m_hDao.m_hImageData.m_iImageProgress.ToString(), Thread.CurrentThread.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 32, brush), new Point(0, 0));
-
-            drawingContext.Close();
-            bmp.Render(drawingVisual);
-
-            PngBitmapEncoder bitmapEncoder = new PngBitmapEncoder();
-            MemoryStream stream = new MemoryStream();
-            bitmapEncoder.Frames.Add(BitmapFrame.Create(bmp));
-            bitmapEncoder.Save(stream);
-            stream.Seek(0, SeekOrigin.Begin);
-            m_hDao.m_hImageData.m_pImageStream = stream.ToArray();
-
-            Dispatcher.Invoke(new Action(delegate
-            {
-                BitmapImage image = new BitmapImage();
-                image.BeginInit();
-                image.CacheOption = BitmapCacheOption.OnLoad;
-                image.StreamSource = stream;
-                image.EndInit();
-                m_hImageShow.Source = image;
-            }));
-
-			//next number
-			m_hDao.m_hImageData.m_iImageProgress++;
-            if (m_hDao.m_hImageData.m_iImageProgress > 10000)
-                m_hDao.m_hImageData.m_iImageProgress = 0;
-        }
-
-        private void Onm_hImageUploaderTimerEvent(object source, ElapsedEventArgs e)
+        private ImageCodecInfo GetEncoderInfo(String mimeType)
         {
+            int j;
+            ImageCodecInfo[] encoders;
+            encoders = ImageCodecInfo.GetImageEncoders();
+            for (j = 0; j < encoders.Length; ++j)
+            {
+                if (encoders[j].MimeType == mimeType)
+                    return encoders[j];
+            }
+            return null;
+        }
+        private void Onm_hImageCreatorTimerEvent(object source, ElapsedEventArgs e)
+		{
+            int iScreenWidth = (int)SystemParameters.VirtualScreenWidth;
+            int iScreenHeight = (int)SystemParameters.VirtualScreenHeight;
+            Bitmap bitmap = new Bitmap(iScreenWidth, iScreenHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            using (Graphics memoryGrahics = Graphics.FromImage(bitmap))
+            {
+                memoryGrahics.CopyFromScreen(0, 0, 0, 0, new System.Drawing.Size(iScreenWidth, iScreenHeight), CopyPixelOperation.SourceCopy);
+            }
+            MemoryStream stream = new MemoryStream();
+            System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
+            EncoderParameter myEncoderParameter;
+            EncoderParameters myEncoderParameters = new EncoderParameters(1);
+            myEncoderParameter = new EncoderParameter(myEncoder, 25L);
+            myEncoderParameters.Param[0] = myEncoderParameter;
+            bitmap.Save(stream, GetEncoderInfo("image/jpeg"), myEncoderParameters);
+
+            //Dispatcher.Invoke(new Action(delegate
+            //{
+            //    BitmapImage image = new BitmapImage();
+            //    image.BeginInit();
+            //    image.CacheOption = BitmapCacheOption.OnLoad;
+            //    image.StreamSource = stream;
+            //    image.EndInit();
+            //    m_hImageShow.Source = image;
+            //}));
+
+            m_hDao.m_pImgDataGrp.Add(stream.ToArray());
+            if (m_hDao.m_pImgDataGrp.Count >= 20)
+            {
+                m_hDao.m_hImgPkg = new ImageTransmissionType(m_hDao.m_pImgDataGrp, m_iImageNum);
+                m_hDao.m_pImgDataGrp.Clear();
+
+                Thread imgUpload = new Thread(ImgUploadFunc);
+                imgUpload.Start();
+            }
+
+            //next number
+            m_iImageNum++;
+            if (m_iImageNum > 100000)
+                m_iImageNum = 0;
+        }
+
+        private void ImgUploadFunc()
+        {
+
+
             //String szRequestUrl = "http://127.0.0.1:8080/upload";
             String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/upload";
 
@@ -88,8 +108,6 @@ namespace ImageUploader
 			hRequest.Method = "POST";
 			hRequest.ContentType = "application/json";
 			hRequest.Timeout = 1000;
-
-
 				
 			try
 			{
@@ -102,12 +120,9 @@ namespace ImageUploader
         {
             HttpWebRequest hRequest = hAsyncResult.AsyncState as HttpWebRequest;
 
-            ImageTransmissionType pkg = new ImageTransmissionType();
-            pkg.imageProgress = m_hDao.m_hImageData.m_iImageProgress;
-            pkg.imageStream = m_hDao.m_hImageData.m_pImageStream;
 
             JsonSerializerSettings jsSettings = new JsonSerializerSettings();
-            string json = JsonConvert.SerializeObject(pkg, jsSettings);
+            string json = JsonConvert.SerializeObject(m_hDao.m_hImgPkg, jsSettings);
             byte[] bytes = Encoding.UTF8.GetBytes(json);
             jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
@@ -128,14 +143,29 @@ namespace ImageUploader
         {
             HttpWebRequest hRequest = hAsyncResult.AsyncState as HttpWebRequest;
             HttpWebResponse hResult;
+            int iProgress;
             try
             {
                 hResult = hRequest.EndGetResponse(hAsyncResult) as HttpWebResponse;
+                StreamReader hReader = new StreamReader(hResult.GetResponseStream());
+                String szResult = hReader.ReadToEnd();
+                iProgress = JsonConvert.DeserializeObject<int>(szResult);
             }
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
+                return;
             }
+            Dispatcher.Invoke(new Action(delegate
+            {
+                m_hUploadProgress.Text = iProgress.ToString();
+            }));
+
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            m_hImageCreatorTimer.Stop();
         }
     }
 }

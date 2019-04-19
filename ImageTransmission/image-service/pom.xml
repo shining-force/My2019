@@ -10,7 +10,7 @@
     </parent>
     <groupId>shinning-force</groupId>
     <artifactId>image-service</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
     <packaging>war</packaging>
     <name>image-service</name>
     <description>Demo project for Image transmission</description>
