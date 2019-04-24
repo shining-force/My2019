@@ -2,32 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="860016e2-6f59-4d73-a624-72859bc7d096" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1414541944151-2f3ec1cfd87d.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1437275537121-331a0457c8d6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1441312311734-f44cc0bda31d.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1462275646964-a0e3386b89fa.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1471240946986-2c558419e9d6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1491926128795-d718e0a18a0d.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1496175362769-08a34d630326(trans-back).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1496857239036-1fb137683000.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1500111709600-7761aa8216c7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1508598126084-9dfccbb92cd5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1509395828889-d50126d3fd14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1516531558361-f6c4c956ad85.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1517331245290-8ab345b4265d.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1519058497187-7167f17c6daf(trans-back).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1519856136673-1f0d88e5685a.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1521497958168-875cd2b0a849(trans-back).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1533305304529-c629748d0ca2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1534492472349-181b5922f240.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1536677813196-8fed27bcecdc.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1541143011610-fe5c3458686e(trans-back).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/photo-1546783177-2c290e5f4a0a.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/Resources/sunflower-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyCompany/资源清单.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCompany/resources.rar" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,7 +17,7 @@
     <session id="242102898">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.108" value="1" />
           <entry key="project.open.time.172" value="1" />
           <entry key="project.open.time.3" value="1" />
@@ -199,7 +174,7 @@
       <workItem from="1555567585468" duration="3885000" />
       <workItem from="1555635988978" duration="11493000" />
       <workItem from="1555665967409" duration="83000" />
-      <workItem from="1556074386553" duration="299000" />
+      <workItem from="1556074386553" duration="679000" />
     </task>
     <task id="LOCAL-00001" summary="添加ES2015 新增语法">
       <created>1555570641915</created>
@@ -229,16 +204,23 @@
       <option name="project" value="LOCAL" />
       <updated>1556074560370</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="添加MyCompany 资源文件">
+      <created>1556074699769</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1556074699769</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15760000" />
+    <option name="totallyTimeSpent" value="16140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -249,7 +231,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
