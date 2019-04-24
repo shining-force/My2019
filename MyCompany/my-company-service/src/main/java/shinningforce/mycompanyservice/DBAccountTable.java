@@ -51,4 +51,5 @@ public class DBAccountTable {
     public void setLvl(Integer lvl) {
         mLvl = lvl;
     }
+
 }

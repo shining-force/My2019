@@ -1,5 +1,6 @@
 package shinningforce.mycompanyservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,6 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ServiceController {
+    private ConsoleService mConsoleService;
+
+    @Autowired
+    ServiceController(ConsoleService consoleService){
+        mConsoleService = consoleService;
+    }
 
     @RequestMapping(method = RequestMethod.GET, path = "/bg/techInfo")
     ResponseEntity<String> OnGetTechInfo(@RequestParam(name = "product",defaultValue = "")String product){
@@ -51,7 +58,7 @@ public class ServiceController {
 
     //console
     @RequestMapping(method = RequestMethod.POST, path = "/console/service")
-    ResponseEntity<String> OnConsoleService(){
-        return ResponseEntity.ok().body("/console/service");
+    ResponseEntity<String> OnConsoleService(ConsoleCodeUpTransmissionType code){
+        return ResponseEntity.ok().body(mConsoleService.CodeHandler(code.mCode, code.mParamL, code.mParamU));
     }
 }

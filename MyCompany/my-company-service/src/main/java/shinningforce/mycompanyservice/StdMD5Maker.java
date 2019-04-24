@@ -1,4 +1,4 @@
-package shinningforce.comlib.format;
+package shinningforce.mycompanyservice;
 import sun.misc.BASE64Encoder;
 import java.security.MessageDigest;
 //changes		date			version
