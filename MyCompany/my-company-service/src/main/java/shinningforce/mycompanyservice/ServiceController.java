@@ -48,4 +48,10 @@ public class ServiceController {
     ResponseEntity<String> OnGetFirm(@RequestParam(name = "product",defaultValue = "")String product){
         return ResponseEntity.ok().body("bg/firm");
     }
+
+    //console
+    @RequestMapping(method = RequestMethod.POST, path = "/console/service")
+    ResponseEntity<String> OnConsoleService(){
+        return ResponseEntity.ok().body("/console/service");
+    }
 }
