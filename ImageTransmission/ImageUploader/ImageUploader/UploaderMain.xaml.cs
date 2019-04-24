@@ -56,9 +56,10 @@ namespace ImageUploader
         }
         private void Onm_hImageCreatorTimerEvent(object source, ElapsedEventArgs e)
 		{
-            int iScreenWidth = (int)SystemParameters.VirtualScreenWidth;
-            int iScreenHeight = (int)SystemParameters.VirtualScreenHeight;
-            Bitmap bitmap = new Bitmap(iScreenWidth, iScreenHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+			int iScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+			int iScreenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+
+			Bitmap bitmap = new Bitmap(iScreenWidth, iScreenHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
             using (Graphics memoryGrahics = Graphics.FromImage(bitmap))
             {
                 memoryGrahics.CopyFromScreen(0, 0, 0, 0, new System.Drawing.Size(iScreenWidth, iScreenHeight), CopyPixelOperation.SourceCopy);
@@ -67,7 +68,7 @@ namespace ImageUploader
             System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
             EncoderParameter myEncoderParameter;
             EncoderParameters myEncoderParameters = new EncoderParameters(1);
-            myEncoderParameter = new EncoderParameter(myEncoder, 25L);
+            myEncoderParameter = new EncoderParameter(myEncoder, 0L);
             myEncoderParameters.Param[0] = myEncoderParameter;
             bitmap.Save(stream, GetEncoderInfo("image/jpeg"), myEncoderParameters);
 
@@ -84,27 +85,24 @@ namespace ImageUploader
             m_hDao.m_pImgDataGrp.Add(stream.ToArray());
             if (m_hDao.m_pImgDataGrp.Count >= 20)
             {
+				//compression
+
                 m_hDao.m_hImgPkg = new ImageTransmissionType(m_hDao.m_pImgDataGrp, m_iImageNum);
                 m_hDao.m_pImgDataGrp.Clear();
 
                 Thread imgUpload = new Thread(ImgUploadFunc);
                 imgUpload.Start();
             }
-
-            //next number
-            m_iImageNum++;
-            if (m_iImageNum > 100000)
-                m_iImageNum = 0;
         }
 
         private void ImgUploadFunc()
         {
 
 
-            //String szRequestUrl = "http://127.0.0.1:8080/upload";
-            String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/upload";
+			//String szRequestUrl = "http://127.0.0.1:8080/upload";
+			String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/upload";
 
-            HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
+			HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl);
 			hRequest.Method = "POST";
 			hRequest.ContentType = "application/json";
 			hRequest.Timeout = 1000;
@@ -160,8 +158,9 @@ namespace ImageUploader
             {
                 m_hUploadProgress.Text = iProgress.ToString();
             }));
-
-        }
+			//next number
+			m_iImageNum++;
+		}
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

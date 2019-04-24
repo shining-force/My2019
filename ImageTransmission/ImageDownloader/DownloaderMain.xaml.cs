@@ -25,16 +25,18 @@ namespace ImageDownloader
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-        int m_iCurrentTimeStamp;
+        int m_iCurrentProgress;
         Queue<byte[]> m_pImgDataGrp;
 
         Thread m_hImgShowFunc;
         bool m_bRunning;
         bool m_bUpdate;
 
+		System.Timers.Timer m_hDownloadTick;
+
         public MainWindow()
 		{
-            m_iCurrentTimeStamp = DateTime.Now.to;
+			m_iCurrentProgress = 0;
             m_pImgDataGrp = new Queue<byte[]>();
 
             m_hImgShowFunc = new Thread(ImgShowFunc);
@@ -44,63 +46,73 @@ namespace ImageDownloader
 
 			InitializeComponent();
 
-			Thread pDownloadProc = new Thread(DownloadImgDataFunc);
-			pDownloadProc.Start();
+			m_hDownloadTick = new System.Timers.Timer(500);
+			m_hDownloadTick.Elapsed += M_hDownloadTick_Elapsed;
+			m_hDownloadTick.Start();
+		}
+
+		private void M_hDownloadTick_Elapsed(object sender, ElapsedEventArgs e)
+		{
+			Thread hDownload = new Thread(DownloadImgDataFunc);
+			hDownload.Start();
 		}
 
 		private void DownloadImgDataFunc()
 		{
-            //String szRequestUrl = "http://127.0.0.1:8080/download";
-            String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/download";
-            while (m_bRunning)
+			//String szRequestUrl = "http://127.0.0.1:8080/download";
+			String szRequestUrl = "http://WebBGTest-env-1.pef5ybuuuv.ap-northeast-1.elasticbeanstalk.com/download";
+
+			HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl + "?imgProgress=" + m_iCurrentProgress.ToString());
+			hRequest.Method = "GET";
+			hRequest.ContentType = "application/json";
+			hRequest.Timeout = 1000;
+			hRequest.ReadWriteTimeout = 1000;
+			hRequest.ContinueTimeout = 1000;
+
+			HttpWebResponse hResult;
+			try
 			{
-				HttpWebRequest hRequest = (HttpWebRequest)WebRequest.Create(szRequestUrl + "?imgProgress=" + m_iCurrentTimeStamp.ToString());
-				hRequest.Method = "GET";
-				hRequest.ContentType = "application/json";
-				hRequest.Timeout = 500;
-
-				HttpWebResponse hResult;
-				try
+				hResult = hRequest.GetResponse() as HttpWebResponse;
+			}
+			catch(Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine(ex.Message);
+				return;
+			}
+			
+			ImageTransmissionType pkg;
+            try
+            {
+				using (StreamReader hReader = new StreamReader(hResult.GetResponseStream()))
 				{
-					hResult = hRequest.GetResponse() as HttpWebResponse;
+					String szResult = hReader.ReadToEnd();
+					pkg = JsonConvert.DeserializeObject<ImageTransmissionType>(szResult);
 				}
-				catch(Exception ex)
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                return;
+            }
+
+            if ((pkg != null) && (m_bRunning))
+            {
+				//make sure one by one
+				Dispatcher.Invoke(new Action(delegate
 				{
-					System.Diagnostics.Debug.WriteLine(ex.Message);
-					continue;
-				}
-				StreamReader hReader = new StreamReader(hResult.GetResponseStream());
-                ImageTransmissionType pkg;
-                try
-                {
-                    String szResult = hReader.ReadToEnd();
-                    pkg = JsonConvert.DeserializeObject<ImageTransmissionType>(szResult);
-                }
-                catch (Exception e)
-                {
-                    System.Diagnostics.Debug.WriteLine(e.Message);
-                    continue;
-                }
-
-                if (pkg != null)
-                {
-                    m_iCurrentTimeStamp = pkg.m_iTimeStamp;
-                    m_bUpdate = false;
-                    foreach (byte[] img in pkg.m_pImgStreamGrp)
-                    {
-                        m_pImgDataGrp.Enqueue(img);
-                    }
-                    m_bUpdate = true;
-                }
-                else
-                {
-                    if (m_pImgDataGrp.Count < 1)
-                    {
-                        m_iCurrentTimeStamp = 0;
-                    }
-                }
-
-                Thread.Sleep(50);
+					if (m_iCurrentProgress >= pkg.m_szImageProgress)
+						return;
+					m_iCurrentProgress = pkg.m_szImageProgress;
+					if (pkg.m_pImgStreamGrp != null)
+					{
+						m_bUpdate = false;
+						foreach (byte[] img in pkg.m_pImgStreamGrp)
+						{
+							m_pImgDataGrp.Enqueue(img);
+						}
+						m_bUpdate = true;
+					}
+				}));
 			}
 		}
 
@@ -171,7 +183,8 @@ namespace ImageDownloader
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            m_bRunning = false;
+			m_hDownloadTick.Stop();
+			m_bRunning = false;
         }
     }
 }
