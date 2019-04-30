@@ -15,9 +15,6 @@ public class StdMD5Maker {
             messageDigest = MessageDigest.getInstance("MD5");
             messageDigest.update(input.getBytes());
             BASE64Encoder encoder = new BASE64Encoder();
-            byte[] raw = encoder.encode(messageDigest.digest()).getBytes();
-            //round 2
-            messageDigest.update(raw);
             return encoder.encode(messageDigest.digest());
         }catch (Exception e)
         {
