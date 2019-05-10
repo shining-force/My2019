@@ -1,5 +1,7 @@
 package shinningforce.mycompanyservice;
 
+import javassist.bytecode.ByteArray;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +12,7 @@ public class DBFlowerPicTable {
     private Integer mID;
 
     @Column(name = "picData")
-    private byte[] mPicData;
+    private Byte[] mPicData;
     @Column(name = "picName")
     private String mPicName;
     @Column(name = "picType")
@@ -19,43 +21,56 @@ public class DBFlowerPicTable {
     private String mPicDescription;
 
 
-    public Integer getID() {
+    Integer getID() {
         return mID;
     }
 
-    public void setID(Integer ID) {
+    void setID(Integer ID) {
         mID = ID;
     }
 
-    public byte[] getPicData() {
-        return mPicData;
+    byte[] getPicData() {
+        byte[] array = new byte[mPicData.length];
+        int index = 0;
+        for (Byte B:
+             mPicData) {
+            array[index++] = B;
+        }
+        return array;
     }
 
-    public void setPicData(byte[] picData) {
-        mPicData = picData;
+
+    void setPicData(byte[] picData) {
+        Byte[] array = new Byte[picData.length];
+        int index = 0;
+        for (byte b:
+             picData) {
+            array[index++] = b;
+        }
+        mPicData = array;
     }
 
-    public String getPicName() {
+    String getPicName() {
         return mPicName;
     }
 
-    public void setPicName(String picName) {
+    void setPicName(String picName) {
         mPicName = picName;
     }
 
-    public String getPicType() {
+    String getPicType() {
         return mPicType;
     }
 
-    public void setPicType(String picType) {
+    void setPicType(String picType) {
         mPicType = picType;
     }
 
-    public String getPicDescription() {
+    String getPicDescription() {
         return mPicDescription;
     }
 
-    public void setPicDescription(String picDescription) {
+    void setPicDescription(String picDescription) {
         mPicDescription = picDescription;
     }
 }

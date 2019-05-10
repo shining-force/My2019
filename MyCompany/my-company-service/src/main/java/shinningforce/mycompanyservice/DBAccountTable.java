@@ -20,35 +20,35 @@ public class DBAccountTable {
     @Column(name = "lv")
     private Integer mLvl;
 
-    public Integer getID() {
+    Integer getID() {
         return mID;
     }
 
-    public void setID(Integer ID) {
+    void setID(Integer ID) {
         mID = ID;
     }
 
-    public String getUserName() {
+    String getUserName() {
         return mUserName;
     }
 
-    public void setUserName(String userName) {
+    void setUserName(String userName) {
         mUserName = userName;
     }
 
-    public String getPassword() {
+    String getPassword() {
         return mPassword;
     }
 
-    public void setPassword(String password) {
+    void setPassword(String password) {
         mPassword = password;
     }
 
-    public Integer getLvl() {
+    Integer getLvl() {
         return mLvl;
     }
 
-    public void setLvl(Integer lvl) {
+    void setLvl(Integer lvl) {
         mLvl = lvl;
     }
 

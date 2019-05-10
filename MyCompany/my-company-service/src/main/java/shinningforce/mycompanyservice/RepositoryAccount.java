@@ -1,8 +1,9 @@
 package shinningforce.mycompanyservice;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface RepositoryAccount extends CrudRepository<DBAccountTable, Integer> {
+public interface RepositoryAccount extends PagingAndSortingRepository<DBAccountTable, Integer> {
+
 
 }
 

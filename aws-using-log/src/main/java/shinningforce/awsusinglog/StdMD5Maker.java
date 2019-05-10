@@ -1,5 +1,6 @@
 package shinningforce.awsusinglog;
 
+import com.sun.istack.internal.Nullable;
 import org.springframework.lang.Nullable;
 import sun.misc.BASE64Encoder;
 

@@ -1,6 +1,6 @@
 package shinningforce.mycompanyservice;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface RepositoryFlowerInfo extends CrudRepository<DBFlowerInfoTable, Integer> {
+public interface RepositoryFlowerInfo extends PagingAndSortingRepository<DBFlowerInfoTable, Integer> {
 }

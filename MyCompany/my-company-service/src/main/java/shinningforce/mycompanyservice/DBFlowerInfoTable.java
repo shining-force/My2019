@@ -16,35 +16,35 @@ public class DBFlowerInfoTable {
     @Column(name = "flowerDescription")
     private String mFlowerDescription;
 
-    public Integer getID() {
+    Integer getID() {
         return mID;
     }
 
-    public void setID(Integer ID) {
+    void setID(Integer ID) {
         mID = ID;
     }
 
-    public String getFlowerInfo() {
+    String getFlowerInfo() {
         return mFlowerInfo;
     }
 
-    public void setFlowerInfo(String flowerInfo) {
+    void setFlowerInfo(String flowerInfo) {
         mFlowerInfo = flowerInfo;
     }
 
-    public String getFlowerName() {
+    String getFlowerName() {
         return mFlowerName;
     }
 
-    public void setFlowerName(String flowerName) {
+    void setFlowerName(String flowerName) {
         mFlowerName = flowerName;
     }
 
-    public String getFlowerDescription() {
+    String getFlowerDescription() {
         return mFlowerDescription;
     }
 
-    public void setFlowerDescription(String flowerDescription) {
+    void setFlowerDescription(String flowerDescription) {
         mFlowerDescription = flowerDescription;
     }
 }

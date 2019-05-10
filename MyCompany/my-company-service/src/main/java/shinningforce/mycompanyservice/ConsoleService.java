@@ -1,13 +1,14 @@
 package shinningforce.mycompanyservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
-import java.util.Base64;
 import java.util.Optional;
 
 @Service
@@ -16,7 +17,7 @@ public class ConsoleService {
     private final static String sConsoleCode_Database_Table_UpdateData = "11U0";
     private final static String sConsoleCode_Database_Table_DeleteData = "11D0";
     private final static String sConsoleCode_Database_Table_ReadData = "11R1";
-    private final static String sConsoleCode_Database_Table_List = "11L1";
+    private final static String sConsoleCode_Database_Table_Page = "11P1";
 
     private final static String sRepository_Account = "RPAT";
     private final static String sRepository_FlowerInfo = "RPFI";
@@ -24,6 +25,7 @@ public class ConsoleService {
 
     private final static String sConsoleService_OK = "OK";
     private final static String sConsoleService_Bad = "Bad";
+    private final static int sRespository_PageSize = 100;
 
     private RepositoryAccount mRepositoryAccount;
     private RepositoryFlowerInfo mRepositoryFlowerInfo;
@@ -56,8 +58,8 @@ public class ConsoleService {
             case sConsoleCode_Database_Table_ReadData:
                 ret = handleReadData(params);
                 break;
-            case sConsoleCode_Database_Table_List:
-                ret = handleList(params);
+            case sConsoleCode_Database_Table_Page:
+                ret = handlePage(params);
                 break;
             default:
                 break;
@@ -265,20 +267,59 @@ public class ConsoleService {
     }
 
     @Transactional
-    String handleList(String[] params){
+    String handlePage(String[] params){
         String ret = "";
+        StringBuilder builder = new StringBuilder();
+        int stNo = Integer.parseInt(params[1]);
+        int edNo = Integer.parseInt(params[2]);
+        int count = edNo - stNo;
+        int pageNo = 0;
 
+        while(stNo > ((pageNo + 1) * sRespository_PageSize - 1)){
+            ++pageNo;
+        }
         switch (params[0]){
             case sRepository_Account:
-                mRepositoryAccount.
+                while(count <= 0){
+                    Page<DBAccountTable> page = mRepositoryAccount.findAll(PageRequest.of(pageNo, sRespository_PageSize));
+                    for (DBAccountTable account:
+                         page) {
+                        builder.append(account.getUserName()).append("&").append(account.getPassword()).append("&").append(account.getLvl());
+                        --count;
+                        if(count <= 0)
+                            break;
+                    }
+                }
                 break;
             case sRepository_FlowerInfo:
+                while(count <= 0){
+                    Page<DBFlowerInfoTable> page = mRepositoryFlowerInfo.findAll(PageRequest.of(pageNo, sRespository_PageSize));
+                    for (DBFlowerInfoTable info:
+                            page) {
+                        builder.append(info.getFlowerName()).append("&").append(info.getFlowerInfo()).append("&").append(info.getFlowerDescription());
+                        --count;
+                        if(count <= 0)
+                            break;
+                    }
+                }
                 break;
             case sRepository_FlowerPic:
+                BASE64Encoder encoder = new BASE64Encoder();
+                while(count <= 0){
+                    Page<DBFlowerPicTable> page = mRepositoryFlowerPic.findAll(PageRequest.of(pageNo, sRespository_PageSize));
+                    for (DBFlowerPicTable pic:
+                            page) {
+                        builder.append(pic.getPicName()).append("&").append(pic.getPicType()).append("&").append(pic.getPicDescription()).append(encoder.encode(pic.getPicData()));
+                        --count;
+                        if(count <= 0)
+                            break;
+                    }
+                }
                 break;
             default:
                 break;
         }
-
+        ret = builder.toString();
+        return ret;
     }
 }
