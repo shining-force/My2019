@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import NavBar from './NavBarComponent';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <NavBar/>
+        <h1 align="left" className="display-1 leftTitle">Don't talk about it,</h1>
+        <h1 align="right" className="display-1 rightTitle">Be about it!</h1>
     </div>
   );
 }

@@ -31,3 +31,17 @@
     transform: rotate(360deg);
   }
 }
+
+.leftTitle{
+  text-align: left;
+  margin:auto;
+  margin-top: 10%;
+  margin-left: 20%;
+ }
+
+.rightTitle{
+  text-align: right;
+  margin:auto;
+  margin-right: 25%;
+
+}
