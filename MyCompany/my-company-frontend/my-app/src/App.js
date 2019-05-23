@@ -1,11 +1,16 @@
 import React from 'react';
 import './App.css';
+import DigitalClock from './utlity/DigitalClock/DigitalClock';
+import WarningButton from './utlity/ButtonTest/WarningButton';
 
-function App(props) {
+
+function App() {
+
+
   return (
     <div className="App">
-        <h1 align="left" className="display-1 leftTitle">Don't talk about it,</h1>
-        <h1 align="right" className="display-1 rightTitle">Be about it!</h1>
+        <DigitalClock/>
+        <WarningButton/>
     </div>
   );
 }
