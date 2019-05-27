@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import DigitalClock from './utlity/DigitalClock/DigitalClock';
-import WarningButton from './utlity/ButtonTest/WarningButton';
-import ProgressInfo from "./utlity/ProgressInfo/ProgressInfo";
+import DigitalClock from './utility/DigitalClock/DigitalClock';
+import WarningButton from './utility/ButtonTest/WarningButton';
+import ProgressInfo from "./utility/ProgressInfo/ProgressInfo";
 
 
 export default class App extends React.Component{
