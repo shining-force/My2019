@@ -2,17 +2,28 @@ import React from 'react';
 import './App.css';
 import DigitalClock from './utlity/DigitalClock/DigitalClock';
 import WarningButton from './utlity/ButtonTest/WarningButton';
+import ProgressInfo from "./utlity/ProgressInfo/ProgressInfo";
 
 
-function App() {
+export default class App extends React.Component{
 
 
-  return (
-    <div className="App">
-        <DigitalClock/>
-        <WarningButton/>
-    </div>
-  );
+    constructor() {
+        super();
+        this.state = {myProgress:"false"};
+    }
+
+    changeProgress(info){
+        this.setState({myProgress:info});
+    }
+
+    render(){
+      return (
+        <div className="App">
+            <ProgressInfo progress={this.state.myProgress}/>
+            <DigitalClock />
+            <WarningButton  progress={this.changeProgress.bind(this)} />
+        </div>
+      );
+    }
 }
-
-export default App;

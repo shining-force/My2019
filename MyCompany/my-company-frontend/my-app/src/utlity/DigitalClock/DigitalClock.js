@@ -8,9 +8,9 @@ class DigitalClock extends React.Component{
     }
 
     render(){
-        return(<div>
+        return(
             <h1 className="display-4 AlignRight">{this.state.date.toLocaleTimeString()}</h1>
-        </div>);
+        );
     }
 
     componentDidMount(){
@@ -20,6 +20,7 @@ class DigitalClock extends React.Component{
     }
 
     tick(){
+        //this.props.progress(new Date().toLocaleTimeString());
         this.setState({
             date:new Date()
         });
