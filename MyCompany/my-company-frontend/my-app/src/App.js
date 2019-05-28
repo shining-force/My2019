@@ -20,6 +20,13 @@ export default class App extends React.Component{
     render(){
       return (
         <div className="App">
+            <div className="myDiv">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <h1>你好</h1>
+            </div>
+
             <ProgressInfo progress={this.state.myProgress}/>
             <DigitalClock />
             <WarningButton  progress={this.changeProgress.bind(this)} />
