@@ -1,0 +1,19 @@
+.navBar{
+    padding-top: 10px;
+    padding-left: 10%;
+    padding-right: 10%;
+    background: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.navBar:hover{
+    background: black;
+}
+
+.navBar ul li{
+    display: inline-block;
+
+    width: 200px;
+    height: 100px;
+}
