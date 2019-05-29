@@ -1,14 +1,5 @@
-.myDiv{
-    /*display: block;*/
-    /*visibility: hidden;*/
-    display:inline-flex;
+.myblock{
+    display: inline-block;
+    width: 400px;
 
-}
-
-.myDiv > div{
-    flex:1;
-}
-
-.myDiv > h1{
-    flex:5;
 }
