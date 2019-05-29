@@ -12,7 +12,7 @@ class WarningButton extends React.Component{
     render(){
 
 
-        return(<button type="button" className={`btn ${this.state.isToggleOn?'btn-success':'btn-danger'} float-right`} onClick={this.handleClick}>
+        return(<button type="button" className={`btn ${this.state.isToggleOn?'btn-success':'btn-danger'} myblock`} onClick={this.handleClick}>
             <h1 >{this.state.isToggleOn?"on":"off"}</h1>
         </button>);
     }

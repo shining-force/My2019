@@ -10,7 +10,7 @@ export default class ProgressInfo extends React.Component{
     }
 
     render(){
-        return(<h1 className={`display-4 AlignRight`}>{this.props.progress}</h1>)
+        return(<h1 className={`display-4 myblock`}>{this.props.progress}</h1>)
     }
 
     componetDidMount(){

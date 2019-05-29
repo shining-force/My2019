@@ -9,7 +9,7 @@ class DigitalClock extends React.Component{
 
     render(){
         return(
-            <h1 className="display-4 AlignRight">{this.state.date.toLocaleTimeString()}</h1>
+            <h1 className="display-4 myblock">{this.state.date.toLocaleTimeString()}</h1>
         );
     }
 
