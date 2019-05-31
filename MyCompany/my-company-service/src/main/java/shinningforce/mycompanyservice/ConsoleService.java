@@ -11,8 +11,29 @@ import sun.misc.BASE64Encoder;
 
 import java.util.Optional;
 
+//            code       paramU
+//new         11N0       [table]&...
+//                       account&[name]&[password]&[lvl]
+//                       info&[name]&[description]&[info]
+//                       pic&[name]&[description]&[type]&[data]
+//update      11U0       [table]&...
+//                       account&[id]&[name]&[password]&[lvl]
+//                       info&[id]&[name]&[description]&[info]
+//                       pic&[id]&[name]&[description]&[type]&[data]
+//delete      11D0       [table]&...
+//                       account&[id]
+//                       info&[id]
+//                       pic&[id]
+//read        11R1       [table]&...
+//                       account&[id]   ret=[name]&[password]&[lvl]
+//                       info&[id]      ret=[name]&[description]&[info]
+//                       pic&[id]       ret=[name]&[description]&[type]&[data]
+//page        11P1       [table]&[stNo]&[edNo]      ret=[id]&[id]...&[id]&
+
+
 @Service
 public class ConsoleService {
+    private final static String sConsoleCode_Connection_Test = "00T1";
     private final static String sConsoleCode_Database_Table_NewData = "11N0";
     private final static String sConsoleCode_Database_Table_UpdateData = "11U0";
     private final static String sConsoleCode_Database_Table_DeleteData = "11D0";
@@ -24,8 +45,9 @@ public class ConsoleService {
     private final static String sRepository_FlowerPic = "RPFP";
 
     private final static String sConsoleService_OK = "OK";
+    private final static String sConsoleService_Connection_OK = "Connection OK";
     private final static String sConsoleService_Bad = "Bad";
-    private final static int sRespository_PageSize = 100;
+    private final static int sRepository_PageSize = 100;
 
     private RepositoryAccount mRepositoryAccount;
     private RepositoryFlowerInfo mRepositoryFlowerInfo;
@@ -38,33 +60,44 @@ public class ConsoleService {
         mRepositoryFlowerPic = repositoryFlowerPic;
     }
 
-    String CodeHandler(String code, String paramL, String paramU){
-        String ret = "";
+    ConsoleCodeDownTransmissionType CodeHandler(String code, String paramL, String paramU){
+        ConsoleCodeDownTransmissionType anwser = new ConsoleCodeDownTransmissionType();
+
         if(!checkMd5Code(paramL)){
-            return ret;
+            return new ConsoleCodeDownTransmissionType();
         }
         String[] params = paramU.split("&");
 
         switch (code){
             case sConsoleCode_Database_Table_NewData:
-                ret = handleNewData(params);
+                anwser.mServiceAnwser = handleNewData(params);
+                anwser.mAnwserType = sConsoleCode_Database_Table_NewData;
                 break;
             case sConsoleCode_Database_Table_UpdateData:
-                ret = handleUpdateData(params);
+                anwser.mServiceAnwser = handleUpdateData(params);
+                anwser.mAnwserType = sConsoleCode_Database_Table_UpdateData;
                 break;
             case sConsoleCode_Database_Table_DeleteData:
-                ret = handleDeleteData(params);
+                anwser.mServiceAnwser = handleDeleteData(params);
+                anwser.mAnwserType = sConsoleCode_Database_Table_DeleteData;
                 break;
             case sConsoleCode_Database_Table_ReadData:
-                ret = handleReadData(params);
+                anwser.mServiceAnwser = handleReadData(params);
+                anwser.mAnwserType = sConsoleCode_Database_Table_ReadData;
                 break;
             case sConsoleCode_Database_Table_Page:
-                ret = handlePage(params);
+                anwser.mServiceAnwser = handlePage(params);
+                anwser.mAnwserType = sConsoleCode_Database_Table_Page;
+                break;
+            case sConsoleCode_Connection_Test:
+                anwser.mServiceAnwser = sConsoleService_Connection_OK;
+                anwser.mAnwserType = sConsoleCode_Connection_Test;
                 break;
             default:
                 break;
         }
-        return ret;
+
+        return anwser;
     }
 
     private boolean checkMd5Code(String md5Code){
@@ -77,7 +110,7 @@ public class ConsoleService {
                 }
             }
         }
-        return false;
+        return "testcodeofzmxncbv".equals(md5Code);//todo only in test!!!
     }
 
     @Transactional
@@ -240,7 +273,7 @@ public class ConsoleService {
                 ret = account.getUserName() + "&" + account.getPassword() + "&" + account.getLvl();
                 break;
             case sRepository_FlowerInfo:
-                if(params.length < 5)
+                if(params.length < 2)
                     break;
                 Optional<DBFlowerInfoTable> optionalInfo = mRepositoryFlowerInfo.findById(Integer.parseInt(params[1]));
                 if(!optionalInfo.isPresent()){
@@ -250,7 +283,7 @@ public class ConsoleService {
                 ret = flowerInfo.getFlowerName() + "&" + flowerInfo.getFlowerDescription() + "&" + flowerInfo.getFlowerInfo();
                 break;
             case sRepository_FlowerPic:
-                if(params.length < 6)
+                if(params.length < 2)
                     break;
                 Optional<DBFlowerPicTable> optionalPic = mRepositoryFlowerPic.findById(Integer.parseInt(params[1]));
                 if(!optionalPic.isPresent()){
@@ -268,52 +301,70 @@ public class ConsoleService {
 
     @Transactional
     String handlePage(String[] params){
-        String ret = "";
+        String ret;
         StringBuilder builder = new StringBuilder();
         int stNo = Integer.parseInt(params[1]);
         int edNo = Integer.parseInt(params[2]);
         int count = edNo - stNo;
-        int pageNo = 0;
+        int pageNo = stNo / sRepository_PageSize;
+        int offset = stNo % sRepository_PageSize;
 
-        while(stNo > ((pageNo + 1) * sRespository_PageSize - 1)){
-            ++pageNo;
-        }
         switch (params[0]){
             case sRepository_Account:
-                while(count <= 0){
-                    Page<DBAccountTable> page = mRepositoryAccount.findAll(PageRequest.of(pageNo, sRespository_PageSize));
+                while(count > 0){
+                    Page<DBAccountTable> page = mRepositoryAccount.findAll(PageRequest.of(pageNo, sRepository_PageSize));
+                    if(page.getContent().size() <= 0)
+                        break;
                     for (DBAccountTable account:
                          page) {
-                        builder.append(account.getUserName()).append("&").append(account.getPassword()).append("&").append(account.getLvl());
-                        --count;
-                        if(count <= 0)
-                            break;
+                        if(offset > 0)
+                            --offset;
+                        else{
+                            builder.append(account.getID()).append('&');
+                            --count;
+                            if(count <= 0)
+                                break;
+                        }
                     }
+                    ++pageNo;
                 }
                 break;
             case sRepository_FlowerInfo:
-                while(count <= 0){
-                    Page<DBFlowerInfoTable> page = mRepositoryFlowerInfo.findAll(PageRequest.of(pageNo, sRespository_PageSize));
+                while(count > 0){
+                    Page<DBFlowerInfoTable> page = mRepositoryFlowerInfo.findAll(PageRequest.of(pageNo, sRepository_PageSize));
+                    if(page.getContent().size() <= 0)
+                        break;
                     for (DBFlowerInfoTable info:
                             page) {
-                        builder.append(info.getFlowerName()).append("&").append(info.getFlowerInfo()).append("&").append(info.getFlowerDescription());
-                        --count;
-                        if(count <= 0)
-                            break;
+                        if(offset > 0)
+                            --offset;
+                        else{
+                            builder.append(info.getID()).append('&');
+                            --count;
+                            if(count <= 0)
+                                break;
+                        }
                     }
+                    ++pageNo;
                 }
                 break;
             case sRepository_FlowerPic:
-                BASE64Encoder encoder = new BASE64Encoder();
-                while(count <= 0){
-                    Page<DBFlowerPicTable> page = mRepositoryFlowerPic.findAll(PageRequest.of(pageNo, sRespository_PageSize));
+                while(count > 0){
+                    Page<DBFlowerPicTable> page = mRepositoryFlowerPic.findAll(PageRequest.of(pageNo, sRepository_PageSize));
+                    if(page.getContent().size() <= 0)
+                        break;
                     for (DBFlowerPicTable pic:
                             page) {
-                        builder.append(pic.getPicName()).append("&").append(pic.getPicType()).append("&").append(pic.getPicDescription()).append(encoder.encode(pic.getPicData()));
-                        --count;
-                        if(count <= 0)
-                            break;
+                        if(offset > 0)
+                            --offset;
+                        else{
+                            builder.append(pic.getID()).append('&');
+                            --count;
+                            if(count <= 0)
+                                break;
+                        }
                     }
+                    ++pageNo;
                 }
                 break;
             default:

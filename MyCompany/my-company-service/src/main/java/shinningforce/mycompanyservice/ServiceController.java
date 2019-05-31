@@ -2,10 +2,7 @@ package shinningforce.mycompanyservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ServiceController {
@@ -58,7 +55,13 @@ public class ServiceController {
 
     //console
     @RequestMapping(method = RequestMethod.POST, path = "/console/service")
-    ResponseEntity<String> OnConsoleService(ConsoleCodeUpTransmissionType code){
+    ResponseEntity<ConsoleCodeDownTransmissionType> OnConsoleService(@RequestBody ConsoleCodeUpTransmissionType code){
+        if(code.mCode == null)
+            code.mCode = "";
+        if(code.mParamL == null)
+            code.mParamL = "";
+        if(code.mParamU == null)
+            code.mParamU = "";
         return ResponseEntity.ok().body(mConsoleService.CodeHandler(code.mCode, code.mParamL, code.mParamU));
     }
 }
