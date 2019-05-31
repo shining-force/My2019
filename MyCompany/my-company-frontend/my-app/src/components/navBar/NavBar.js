@@ -8,9 +8,9 @@ const colorful_user_login = "./resources/user_login_colorful.svg";
 const black_search = "./resources/search_black.svg";
 const colorful_search = "./resources/search_colorful.svg";
 
-const market = "市场";
-const professionalProduct = "专业产品";
-const moreProduct="更多产品";
+const market = "Marketing";
+const professionalProduct = "Professional";
+const moreProduct="More Product";
 
 const link_market = "https://www.taobao.com";
 const link_professionalProduct = "https://www.taobao.com";
@@ -21,13 +21,16 @@ class NavBar extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {hoverd:false
+        this.state = {navBarHoverd:false,
+            marketHoverd:false,
+            professionalProduct:false
         };
 
     }
 
     render(){
-        return(<div className="navBar" onMouseEnter={()=> this.setState({hoverd:true})} onMouseLeave={()=> this.setState({hoverd:false})}>
+        return(<div>
+            <div className="navBar" onMouseEnter={()=> this.setState({navBarHoverd:true})} onMouseLeave={()=> this.setState({navBarHoverd:false})}>
             <div className="companyLogo">
                 <ul>
                     <li>logo</li>
@@ -36,8 +39,8 @@ class NavBar extends React.Component{
 
             <div className="productCategory">
                 <ul>
-                    <li><a href={link_market}>{market}</a></li>
-                    <li><a href={link_professionalProduct}>{professionalProduct}</a></li>
+                    <li><a href={link_market} onMouseEnter={()=> this.setState({marketHoverd:true})} onMouseLeave={()=> this.setState({marketHoverd:false})}>{market}</a></li>
+                    <li><a href={link_professionalProduct} onMouseEnter={()=> this.setState({professionalProduct:true})} onMouseLeave={()=> this.setState({professionalProduct:false})}>{professionalProduct}</a></li>
                 </ul>
             </div>
 
@@ -49,7 +52,13 @@ class NavBar extends React.Component{
                     <li>4</li>
                 </ul>
             </div>
-            <div className={this.state.hoverd?'backgroundShow':'backgroundHide'}></div>
+            <div className={this.state.navBarHoverd?'backgroundShow':'backgroundHide'}></div>
+            </div>
+            <div className="subMenus">
+                <div className={`subMenu ${this.state.marketHoverd?'subMenuShow':'subMenuHide'}`}>This is "MarketPlace"</div>
+                <div className={`subMenu ${this.state.professionalProduct?'subMenuShow':'subMenuHide'}`}>This is "ProfessionalProduct"</div>
+            </div>
+
         </div>)
     }
 }
