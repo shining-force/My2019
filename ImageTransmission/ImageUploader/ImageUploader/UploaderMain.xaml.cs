@@ -59,7 +59,7 @@ namespace ImageUploader
 			int iScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
 			int iScreenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
 
-			Bitmap bitmap = new Bitmap(iScreenWidth, iScreenHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            Bitmap bitmap = new Bitmap(iScreenWidth, iScreenHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
             using (Graphics memoryGrahics = Graphics.FromImage(bitmap))
             {
                 memoryGrahics.CopyFromScreen(0, 0, 0, 0, new System.Drawing.Size(iScreenWidth, iScreenHeight), CopyPixelOperation.SourceCopy);
