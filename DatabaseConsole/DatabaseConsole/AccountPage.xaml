@@ -1,0 +1,30 @@
+﻿<Page x:Class="DatabaseConsole.AccountPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DatabaseConsole"
+      mc:Ignorable="d" 
+      Title="AccountTable" Width="640" Height="440" HorizontalAlignment="Left" VerticalAlignment="Top" Loaded="Page_Loaded">
+
+    <Grid x:Name="mGrid" Background="#FFE8E8E8">
+        <Label x:Name="mTitleLabel" Content="用户表" Margin="0" VerticalContentAlignment="Center" Height="24" Width="640" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14" FontFamily="MS Gothic" Background="Black" Foreground="White" Padding="2,0,0,0" MouseDown="mTitleLabel_MouseDown"/>
+        <DataGrid x:Name="mAccountTable" HorizontalAlignment="Left" Height="388" Margin="0,52,0,0" VerticalAlignment="Top" Width="640" VerticalContentAlignment="Center" Padding="2,0,0,0" IsSynchronizedWithCurrentItem="True" FontSize="14" FontFamily="MS Gothic" RowHeight="24" AutoGenerateColumns="False" CanUserResizeRows="False" ColumnWidth="auto" SelectionMode="Single">
+            <DataGrid.ContextMenu>
+                <ContextMenu FontFamily="MS PGothic" FontSize="14">
+                    <MenuItem x:Name="mAddMenu" FontSize="14" FontFamily="MS PGothic" IsTabStop="False" Header="添加" Click="mAddMenu_Click"/>
+                    <MenuItem x:Name="mDeleteMenu" FontSize="14" FontFamily="MS PGothic" IsTabStop="False" Header="删除" Click="mDeleteMenu_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding mId}" ClipboardContentBinding="{x:Null}" Header="Id" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding mName}" ClipboardContentBinding="{x:Null}" Header="用户名"/>
+                <DataGridTextColumn Binding="{Binding mPsw}" ClipboardContentBinding="{x:Null}" Header="密码"/>
+                <DataGridTextColumn Binding="{Binding mLvl}" ClipboardContentBinding="{x:Null}" Header="Lvl"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="mHttpState" HorizontalAlignment="Left" Height="24" Margin="0,26,0,0" VerticalAlignment="Top" Width="500" FontSize="14" FontFamily="MS Gothic" Padding="2,0,0,0" VerticalContentAlignment="Center"/>
+        <Button x:Name="mPageUpBtn" Content="上一页" HorizontalAlignment="Left" Height="24" Margin="502,26,0,0" VerticalAlignment="Top" Width="68" Padding="0" FontSize="14" FontFamily="MS Gothic" Click="mPageUpBtn_Click"/>
+        <Button x:Name="mPageDownBtn" Content="下一页" HorizontalAlignment="Left" Height="24" Margin="570,26,0,0" VerticalAlignment="Top" Width="68" Padding="0" FontSize="14" FontFamily="MS Gothic" Click="mPageDownBtn_Click"/>
+    </Grid>
+</Page>
