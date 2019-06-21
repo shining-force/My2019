@@ -9,10 +9,15 @@ import org.springframework.transaction.annotation.Transactional;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.util.Optional;
 
 //            code       paramU
-//new         11N0       [table]&...
+//connectTest 00T1       Connection OK
+//new         11N1       [table]&...
 //                       account&[name]&[password]&[lvl]
 //                       info&[name]&[description]&[info]
 //                       pic&[name]&[description]&[type]&[data]
@@ -28,21 +33,24 @@ import java.util.Optional;
 //                       account&[id]   ret=[name]&[password]&[lvl]
 //                       info&[id]      ret=[name]&[description]&[info]
 //                       pic&[id]       ret=[name]&[description]&[type]&[data]
-//page        11P1       [table]&[stNo]&[edNo]      ret=[id]&[id]...&[id]&
-
+//page        11P1       [table]&[stNo]&[count]      ret=[id]&[id]...&[id]&
+//info        10I1       ret=[tableNum]&[table1]&[dataNum]&[table2]&[dataNum]...&[tableN]&[dataNum]
 
 @Service
 public class ConsoleService {
     private final static String sConsoleCode_Connection_Test = "00T1";
-    private final static String sConsoleCode_Database_Table_NewData = "11N0";
+    private final static String sConsoleCode_Database_Table_NewData = "11N1";
     private final static String sConsoleCode_Database_Table_UpdateData = "11U0";
     private final static String sConsoleCode_Database_Table_DeleteData = "11D0";
     private final static String sConsoleCode_Database_Table_ReadData = "11R1";
     private final static String sConsoleCode_Database_Table_Page = "11P1";
+    private final static String sConsoleCode_Database_INFO = "10I1";
 
     private final static String sRepository_Account = "RPAT";
     private final static String sRepository_FlowerInfo = "RPFI";
     private final static String sRepository_FlowerPic = "RPFP";
+
+    private final static String sFileStoragePath_FlowerPic = "F:\\98_Files\\server\\00_FlowerPic\\";
 
     private final static String sConsoleService_OK = "OK";
     private final static String sConsoleService_Connection_OK = "Connection OK";
@@ -89,6 +97,10 @@ public class ConsoleService {
                 anwser.mServiceAnwser = handlePage(params);
                 anwser.mAnwserType = sConsoleCode_Database_Table_Page;
                 break;
+            case sConsoleCode_Database_INFO:
+                anwser.mServiceAnwser = handleInfo();
+                anwser.mAnwserType = sConsoleCode_Database_INFO;
+                break;
             case sConsoleCode_Connection_Test:
                 anwser.mServiceAnwser = sConsoleService_Connection_OK;
                 anwser.mAnwserType = sConsoleCode_Connection_Test;
@@ -125,7 +137,7 @@ public class ConsoleService {
                 newAccount.setPassword(params[2]);
                 newAccount.setLvl(Integer.parseInt(params[3]));
                 mRepositoryAccount.save(newAccount);
-                ret = sConsoleService_OK;
+                ret = newAccount.getID().toString();
                 break;
             case sRepository_FlowerInfo:
                 if(params.length < 4)
@@ -135,7 +147,7 @@ public class ConsoleService {
                 newFlowerInfo.setFlowerDescription(params[2]);
                 newFlowerInfo.setFlowerInfo(params[3]);
                 mRepositoryFlowerInfo.save(newFlowerInfo);
-                ret = sConsoleService_OK;
+                ret = newFlowerInfo.getID().toString();
                 break;
             case sRepository_FlowerPic:
                 if(params.length < 5)
@@ -144,15 +156,35 @@ public class ConsoleService {
                 newFlowerPic.setPicName(params[1]);
                 newFlowerPic.setPicDescription(params[2]);
                 newFlowerPic.setPicType(params[3]);
+                mRepositoryFlowerPic.save(newFlowerPic);//save to get id
+
+                File file = new File(sFileStoragePath_FlowerPic, newFlowerPic.getID().toString());
                 try{
+                    if(file.exists()){
+                        file.delete();
+                    }
+                    file.createNewFile();
+                    FileOutputStream stream = new FileOutputStream(file);
                     BASE64Decoder decoder = new BASE64Decoder();
-                    newFlowerPic.setPicData(decoder.decodeBuffer(params[4]));
+
+                    StringBuilder picData = new StringBuilder();
+                    picData.append(params[4]);
+
+                    if(params.length > 5){
+                        //recover data
+                        for(int index = 5; index < params.length; ++index){
+                            picData.append("&").append(params[index]);
+                        }
+                    }
+
+                    stream.write(decoder.decodeBuffer(picData.toString()));
+                    stream.close();
                 }catch (Exception e){
+                    mRepositoryFlowerPic.delete(newFlowerPic);
                     break;
                 }
 
-                mRepositoryFlowerPic.save(newFlowerPic);
-                ret = sConsoleService_OK;
+                ret = newFlowerPic.getID().toString();
                 break;
             default:
                 break;
@@ -203,9 +235,27 @@ public class ConsoleService {
                 flowerPic.setPicName(params[2]);
                 flowerPic.setPicDescription(params[3]);
                 flowerPic.setPicType(params[4]);
+
+                File file = new File(sFileStoragePath_FlowerPic, flowerPic.getID().toString());
                 try{
+                    if(file.exists()){
+                        file.delete();
+                    }
+                    file.createNewFile();
+                    FileOutputStream stream = new FileOutputStream(file);
                     BASE64Decoder decoder = new BASE64Decoder();
-                    flowerPic.setPicData(decoder.decodeBuffer(params[5]));
+                    StringBuilder picData = new StringBuilder();
+                    picData.append(params[5]);
+
+                    if(params.length > 6){
+                        //recover data
+                        for(int index = 6; index < params.length; ++index){
+                            picData.append("&").append(params[index]);
+                        }
+                    }
+
+                    stream.write(decoder.decodeBuffer(picData.toString()));
+                    stream.close();
                 }catch (Exception e){
                     break;
                 }
@@ -249,7 +299,17 @@ public class ConsoleService {
                 if(!optionalPic.isPresent()){
                     break;
                 }
+                //delete this in database first
                 mRepositoryFlowerPic.deleteById(Integer.parseInt(params[1]));
+
+                File file = new File(sFileStoragePath_FlowerPic, optionalPic.get().getID().toString());
+                try{
+                    if(file.exists()){
+                        file.delete();
+                    }
+                }catch (Exception e){
+                    //do nothing
+                }
                 ret = sConsoleService_OK;
                 break;
             default:
@@ -280,6 +340,7 @@ public class ConsoleService {
                     break;
                 }
                 DBFlowerInfoTable flowerInfo = optionalInfo.get();
+
                 ret = flowerInfo.getFlowerName() + "&" + flowerInfo.getFlowerDescription() + "&" + flowerInfo.getFlowerInfo();
                 break;
             case sRepository_FlowerPic:
@@ -291,11 +352,21 @@ public class ConsoleService {
                 }
                 DBFlowerPicTable flowerPic = optionalPic.get();
                 BASE64Encoder encoder = new BASE64Encoder();
-                ret = flowerPic.getPicName() + "&" + flowerPic.getPicDescription() + "&" + flowerPic.getPicType() + "&" + encoder.encode(flowerPic.getPicData());
+                File file = new File(sFileStoragePath_FlowerPic, flowerPic.getID().toString());
+                byte[] buf = new byte[(int)file.length()];
+                try{
+                    FileInputStream stream = new FileInputStream(file);
+                    stream.read(buf);
+                    stream.close();
+                }catch (Exception e){
+                    break;
+                }
+                ret = flowerPic.getPicName() + "&" + flowerPic.getPicDescription() + "&" + flowerPic.getPicType() + "&" + encoder.encode(buf);
                 break;
             default:
                 break;
         }
+
         return ret;
     }
 
@@ -304,8 +375,7 @@ public class ConsoleService {
         String ret;
         StringBuilder builder = new StringBuilder();
         int stNo = Integer.parseInt(params[1]);
-        int edNo = Integer.parseInt(params[2]);
-        int count = edNo - stNo;
+        int count = Integer.parseInt(params[2]);
         int pageNo = stNo / sRepository_PageSize;
         int offset = stNo % sRepository_PageSize;
 
@@ -371,6 +441,16 @@ public class ConsoleService {
                 break;
         }
         ret = builder.toString();
+        if(ret.length() > 0)
+            ret = ret.substring(0, ret.length() - 1);
         return ret;
+    }
+
+    @Transactional
+    String handleInfo() {
+        return "3&" +
+                sRepository_Account + "&" + mRepositoryAccount.count() + "&" +
+                sRepository_FlowerInfo + "&" + mRepositoryFlowerInfo.count() + "&" +
+                sRepository_FlowerPic + "&" + mRepositoryFlowerPic.count();
     }
 }
